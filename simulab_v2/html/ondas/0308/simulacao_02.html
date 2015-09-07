@@ -1,0 +1,427 @@
+<!DOCTYPE HTML>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<body>
+    <canvas id="myCanvas" width="650" height="550"></canvas>
+	<script src="ifscript.js"></script>
+    <script>		
+	//--------------------------------------------------------------------------------------------
+	var canvas = document.getElementById('myCanvas');
+	var ctx = canvas.getContext('2d');
+	var x0 = -40;
+	var y0 = 300;
+	var passo = 40;
+	var vel1 = 1;
+	var vel2 = 0.6;
+	var raio = 4;
+	var tempo = 0;
+	var limite = 400;
+	var cor = 'rgb(120,120,150)';
+	var cor1 = 'rgb(0,0,180';
+	var cor2 = 'rgb(0,0,100)'
+	var cor3 = 'rgb(0,0,100)'
+	var cor4 = 'rgb(0,0,100)'
+	var validar_pontos = true;			// Controla visualização dos pontos
+	var validar_animacao = false;		// Habilita a animação
+	var validar_modo = true;			// Desabilita os botões de velocidade
+	var validar_modovisual = false;		// Desabilita o botão Visualizar
+	var validar_visualizacao = false;	// Controla a visualização
+	var modo1 = true;
+	var modo2 = false;
+	var modo3 = false;
+	var px1 = new Array;
+	var py1 = new Array;
+	var px2 = new Array;
+	var py2 = new Array;	
+	var px3 = new Array;
+	var py3 = new Array;	
+	var px4 = new Array;
+	var py4 = new Array;	
+	var px5 = new Array;
+	var py5 = new Array;	
+	var px6 = new Array;
+	var py6 = new Array;	
+	var px7 = new Array;
+	var py7 = new Array;	
+	var px8 = new Array;
+	var py8 = new Array;	
+	var px9 = new Array;
+	var py9 = new Array;	
+	var px10 = new Array;
+	var py10= new Array;
+	//
+	function inicial(){
+		px1[1] = x0 + passo;
+		py1[1] = y0 - passo;
+		
+		px2[1] = px1[1] - passo;
+		py2[1] = py1[1] - passo;
+		
+		px3[1] = px2[1] - passo;
+		py3[1] = py2[1] - passo;
+		
+		px4[1] = px3[1] - passo;
+		py4[1] = py3[1] - passo;
+		
+		px5[1] = px4[1] - passo;
+		py5[1] = py4[1] - passo;
+		
+		px6[1] = px5[1] - passo;
+		py6[1] = py5[1] - passo;
+		
+		px7[1] = px6[1] - passo;
+		py7[1] = py6[1] - passo;
+		
+		px8[1] = px7[1] - passo;
+		py8[1] = py7[1] - passo;
+		
+		px9[1] = px8[1] - passo;
+		py9[1] = py8[1] - passo;
+		
+		px10[1] = px9[1] - passo;
+		py10[1] = py9[1] - passo;
+		
+		for(var i=2;i<=10;i++){
+			px1[i] = px1[i-1] + passo;
+			py1[i] = py1[i-1] - passo;
+			
+			px2[i] = px2[i-1] + passo;
+			py2[i] = py2[i-1] - passo;	
+
+			px3[i] = px3[i-1] + passo;
+			py3[i] = py3[i-1] - passo;
+
+			px4[i] = px4[i-1] + passo;
+			py4[i] = py4[i-1] - passo;
+
+			px4[i] = px4[i-1] + passo;
+			py4[i] = py4[i-1] - passo;
+
+			px5[i] = px5[i-1] + passo;
+			py5[i] = py5[i-1] - passo;	
+			
+			px6[i] = px6[i-1] + passo;
+			py6[i] = py6[i-1] - passo;
+			
+			px7[i] = px7[i-1] + passo;
+			py7[i] = py7[i-1] - passo;
+			
+			px8[i] = px8[i-1] + passo;
+			py8[i] = py8[i-1] - passo;
+			
+			px9[i] = px9[i-1] + passo;
+			py9[i] = py9[i-1] - passo;
+			
+			px10[i] = px10[i-1] + passo;
+			py10[i] = py10[i-1] - passo;
+		}
+	}
+	inicial();
+	// BOTÕES ------------------------------------------------------------------------------------------------------------
+	var bx1 = 15;
+	var by1 = 515;
+	
+	var bx2 = bx1 + 150;
+	var by2 = by1;
+	
+	var bx3 = bx2 + 100;
+	var by3 = by1;
+	
+	var bx4 = bx3 + 90;
+	var by4 = by1;
+	
+	var bx5 = bx4 + 90;
+	var by5 = by1;
+	
+	var bx6 = bx5 + 90;
+	var by6 = by1;
+	
+	function botao_iniciar(px,py){
+		retangulopreenchido2(px,py,140,25,'rgba(131,198,201,0.4)');
+		escrever('Iniciar/Pausa',10,'verdana',px + 19,py + 17,'rgb(0,0,100)');	
+	}
+	
+	function botao_voltar(px,py){
+		retangulopreenchido2(px,py,90,25,'rgba(131,198,201,0.4)');
+		escrever('Voltar',10,'verdana',px + 19,py + 17,'rgb(0,0,100)');	
+	}
+	
+	function botao(px,py, texto,L,cor){
+		//retangulopreenchido2(px,py,L,25,'rgba(131,198,201,0.6)');
+		retangulopreenchido2(px,py,L,25,'rgba(255,181,77,0.6)');
+		escrever(texto,10,'verdana',px + 10,py + 17,cor);	
+	}
+	
+	function botao2(px,py, texto,L,cor){
+		//retangulopreenchido2(px,py,L,25,'rgba(131,198,201,0.6)');
+		retangulopreenchido2(px,py,L,25,'rgba(166,222,183,0.6)');
+		escrever(texto,10,'verdana',px + 10,py + 17,cor);	
+	}
+	//------------------------------------------------------------------------------------------------------------
+	//BOTÕES (PROGRAMAÇÃO) -------------------------------------------------------------------------
+		var b = 7		
+		function cliqueMouse(e){
+			// INICIAR
+			if(e.pageX > bx1 + b && e.pageX < bx1 + 140 + b && e.pageY > by1 + b && e.pageY < by1 + 25 + b){			
+				if(validar_animacao == false){
+					validar_animacao = true;
+					validar_modo = false;	
+				}else{
+					validar_animacao = false;
+				}
+			}
+
+			// VOLTAR
+			if(e.pageX > bx2 + b && e.pageX < bx2 + 90 + b && e.pageY > by2 + b && e.pageY < by2 + 25 + b){	
+				tempo = 0;
+				validar_pontos = true;
+				validar_animacao = false;
+				validar_modo = true;
+				validar_visualizacao = false;
+				validar_modovisual = false;
+				cor4 = 'black';
+				inicial();				
+			}
+			
+			// V1 < V2
+			if(e.pageX > bx3 + b && e.pageX < bx3 + 90 + b && e.pageY > by3 + b && e.pageY < by3 + 25 + b){	
+				if(validar_modo == true){
+					vel1 = 1;
+					vel2 = 0.6;
+					cor1 = 'rgb(0,0,220';
+					cor2 = 'rgb(0,0,100)'
+					cor3 = 'rgb(0,0,100)'
+					modo1 = true;
+					modo2 = false;
+					modo3 = false;
+				}	
+			}
+			
+			// V1 > V2
+			if(e.pageX > bx4 + b && e.pageX < bx4 + 90 + b && e.pageY > by4 + b && e.pageY < by4 + 25 + b){	
+				if(validar_modo == true){
+					vel1 = 1;
+					vel2 = 1.4;
+					cor1 = 'rgb(0,0,100)';
+					cor2 = 'rgb(0,0,220';
+					cor3 = 'rgb(0,0,100)'
+					modo1 = false;
+					modo2 = true;
+					modo3 = false;
+				}	
+			}
+			
+			// V1 = V2
+			if(e.pageX > bx5 + b && e.pageX < bx5 + 90 + b && e.pageY > by5 + b && e.pageY < by5 + 25 + b){	
+				if(validar_modo == true){
+					vel1 = 1;
+					vel2 = 1;
+					cor1 = 'rgb(0,0,100)'
+					cor2 = 'rgb(0,0,100)'
+					cor3 = 'rgb(0,0,220';
+					modo1 = false;
+					modo2 = false;
+					modo3 = true;
+				}	
+			}
+			
+			// Visualizar
+			if(e.pageX > bx6 + b && e.pageX < bx6 + 90 + b && e.pageY > by6 + b && e.pageY < by6 + 25 + b){	
+				if(validar_modovisual == true){
+					if(validar_visualizacao == false){
+						validar_visualizacao = true;
+						cor4 = 'rgb(0,0,220)';
+					}else{
+						validar_visualizacao = false;
+						cor4 = 'black';
+					}
+				}
+			}			
+		}	
+		canvas.onmousedown = cliqueMouse;	
+	//------------------------------------------------------------------------------------------------------------
+	var alpha = 1;
+	function esquema1(){
+		vetor(218,y0 - 145,200,'rgba(255,0,0,' + alpha + ')',45,1); 			//DIREÇÃO INCIDENTE
+		linhapontilhada(362,y0 + 150,30,-90); 									//RETA NORMAL
+		vetor(365,y0 + 2,200,'rgba(255,0,0,' + alpha + ')',60,1);				//DIREÇÃO REFRATADA 01
+	}
+	
+	function esquema2(){
+		vetor(218,y0 - 145,200,'red',45,1); 			//DIREÇÃO INCIDENTE
+		linhapontilhada(362,y0 + 150,30,-90); 			//RETA NORMAL
+		vetor(365,y0 + 2,198,'red',18,1);				//DIREÇÃO REFRATADA 02
+		//arco(362,y0,40,-135,-90,2,'rgb(0,0,100)');		
+		//arco(362,y0,40,21,90,2,'rgb(0,0,100)');			
+	}
+	
+	function esquema3(){
+		vetor(218,y0 - 145,200,'red',45,1); 			//DIREÇÃO INCIDENTE
+		linhapontilhada(362,y0 + 150,30,-90); 			//RETA NORMAL
+		vetor(365,y0 + 3,200,'red',45,1); 
+	}
+	
+	//-----------------------------------------------------------------------------------------------------------
+	function desenhar(){		
+		ctx.clearRect(0,0,canvas.width, canvas.height);
+		retangulopreenchido2(0,0,canvas.width,300,'rgba(235,235,250,0.8)'); 			// Retângulo meio 01
+		retangulopreenchido2(0,300,canvas.width,200,'rgba(215,250,234,0.8)'); 		// Retângulo meio 02		
+		retahorizontal(0,y0,canvas.width,0.2,'black');	
+		escrever('Meio 1',10,'verdana',570,30,'rgb(0,0,60');	
+		escrever('Meio 2',10,'verdana',30,480,'rgb(0,0,60');				
+		//-------------------------------------------------------------------------------------------
+		for(var i=1;i<=10;i++){
+		
+			if(validar_pontos == true){
+				circulo(px1[i],py1[i], raio, cor, 'rgba(0,0,0,0)');
+				circulo(px2[i],py2[i], raio, cor, 'rgba(0,0,0,0)');
+				circulo(px3[i],py3[i], raio, cor, 'rgba(0,0,0,0)');
+				circulo(px4[i],py4[i], raio, cor, 'rgba(0,0,0,0)');
+				circulo(px5[i],py5[i], raio, cor, 'rgba(0,0,0,0)');
+				circulo(px6[i],py6[i], raio, cor, 'rgba(0,0,0,0)');			
+				circulo(px7[i],py7[i], raio, cor, 'rgba(0,0,0,0)');			
+				circulo(px8[i],py8[i], raio, cor, 'rgba(0,0,0,0)');			
+				circulo(px9[i],py9[i], raio, cor, 'rgba(0,0,0,0)');			
+				circulo(px10[i],py10[i], raio, cor, 'rgba(0,0,0,0)');
+			}
+			
+			if(validar_animacao == true){
+				tempo = tempo + 0.1;
+				if(tempo < limite){
+					if(py1[i] < y0){
+						px1[i] = px1[i] + vel1;
+						py1[i] = py1[i] + vel1;
+					}else{
+						px1[i] = px1[i] + vel2;
+						py1[i] = py1[i] + vel2;
+					}
+					
+					if(py2[i] < y0){
+						px2[i] = px2[i] + vel1;
+						py2[i] = py2[i] + vel1;
+					}else{
+						px2[i] = px2[i] + vel2;
+						py2[i] = py2[i] + vel2;
+					}
+					
+					if(py3[i] < y0){
+						px3[i] = px3[i] + vel1;
+						py3[i] = py3[i] + vel1;
+					}else{
+						px3[i] = px3[i] + vel2;
+						py3[i] = py3[i] + vel2;
+					}
+					
+					if(py4[i] < y0){
+						px4[i] = px4[i] + vel1;
+						py4[i] = py4[i] + vel1;
+					}else{
+						px4[i] = px4[i] + vel2;
+						py4[i] = py4[i] + vel2;
+					}
+					
+					if(py5[i] < y0){
+						px5[i] = px5[i] + vel1;
+						py5[i] = py5[i] + vel1;
+					}else{
+						px5[i] = px5[i] + vel2;
+						py5[i] = py5[i] + vel2;
+					}
+					
+					if(py6[i] < y0){
+						px6[i] = px6[i] + vel1;
+						py6[i] = py6[i] + vel1;
+					}else{
+						px6[i] = px6[i] + vel2;
+						py6[i] = py6[i] + vel2;
+					}
+					
+					if(py7[i] < y0){
+						px7[i] = px7[i] + vel1;
+						py7[i] = py7[i] + vel1;
+					}else{
+						px7[i] = px7[i] + vel2;
+						py7[i] = py7[i] + vel2;
+					}
+					
+					if(py8[i] < y0){
+						px8[i] = px8[i] + vel1;
+						py8[i] = py8[i] + vel1;
+					}else{
+						px8[i] = px8[i] + vel2;
+						py8[i] = py8[i] + vel2;
+					}
+					
+					if(py9[i] < y0){
+						px9[i] = px9[i] + vel1;
+						py9[i] = py9[i] + vel1;
+					}else{
+						px9[i] = px9[i] + vel2;
+						py9[i] = py9[i] + vel2;
+					}
+					
+					if(py10[i] < y0){
+						px10[i] = px10[i] + vel1;
+						py10[i] = py10[i] + vel1;
+					}else{
+						px10[i] = px10[i] + vel2;
+						py10[i] = py10[i] + vel2;
+					}				
+				}else{
+					validar_animacao = false;
+					validar_pontos = false;
+					validar_modovisual = true;					
+				}
+			}
+		}
+		
+		for(var i=1;i<=10;i++){	
+			linhareta(px1[i],py1[i],px1[i+1],py1[i+1],1,'black');
+			
+			linhareta(px2[i],py2[i],px2[i+1],py2[i+1],1,'black');
+			
+			linhareta(px3[i],py3[i],px3[i+1],py3[i+1],1,'black');
+			
+			linhareta(px4[i],py4[i],px4[i+1],py4[i+1],1,'black');
+			
+			linhareta(px5[i],py5[i],px5[i+1],py5[i+1],1,'black');
+			
+			linhareta(px6[i],py6[i],px6[i+1],py6[i+1],1,'black');
+			
+			linhareta(px7[i],py7[i],px7[i+1],py7[i+1],1,'black');
+			
+			linhareta(px8[i],py8[i],px8[i+1],py8[i+1],1,'black');
+			
+			linhareta(px9[i],py9[i],px9[i+1],py9[i+1],1,'black');
+			
+			linhareta(px10[i],py10[i],px10[i+1],py10[i+1],1,'black');
+		}
+		if(validar_modovisual == true && validar_visualizacao == true){
+			if(modo1 == true){
+				esquema1();
+			}
+			if(modo2 == true){
+				esquema2();
+			}
+			if(modo3 == true){
+				esquema3();
+			}
+		}
+		//
+		retangulovazado(0,0,canvas.width,502,4,'black'); // BORDA
+		//retangulopreenchido2(0,y0 + 202,650,80,'rgb(240,240,245)'); // SOMBRA PARA OS BOTÕES
+		retangulopreenchido2(0,y0 + 202,650,80,'rgb(250,250,255)'); // SOMBRA PARA OS BOTÕES
+		//DESENHO DOS BOTÕES ------------------------------------------------------------------------
+		botao_iniciar(bx1,by1);
+		botao_voltar(bx2,by2);
+		botao(bx3,by3,'V1 > V2',80,cor1);
+		botao(bx4,by4,'V1 < V2',80,cor2);
+		botao(bx5,by5,'V1 = V2',80,cor3);
+		botao2(bx6,by6,'Visualizar',100,cor4);		
+	}
+	// ------------------------------------------------------------------------------------------	
+	setInterval(desenhar,10);
+	// ------------------------------------------------------------------------------------------	
+    </script>
+  </body>
+</html>

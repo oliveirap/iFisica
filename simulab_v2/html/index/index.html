@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<title>SIMULAB - iFisica.org</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">	
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
+	<link rel="apple-touch-icon" sizes="57x57" href="icons/apple-touch-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="icons/apple-touch-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="icons/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="icons/apple-touch-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="icons/apple-touch-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="icons/apple-touch-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="icons/apple-touch-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="icons/apple-touch-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon-180x180.png">
+	<link rel="icon" type="image/png" href="icons/favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="icons/android-chrome-192x192.png" sizes="192x192">
+	<link rel="icon" type="image/png" href="icons/favicon-96x96.png" sizes="96x96">
+	<link rel="manifest" href="icons/manifest.json">
+	<meta name="apple-mobile-web-app-title" content="SIMULAB iFisica.org">
+	<meta name="application-name" content="SIMULAB iFisica.org">
+	<meta name="msapplication-TileColor" content="#2d89ef">
+	<meta name="msapplication-TileImage" content="icons/mstile-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+	<link rel="stylesheet" href="css/estilo.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+	<script src="script.js" type="text/javascript"></script>
+	
+
+</head>
+<body>
+
+<!-- ////////////////////////////////// CABEÇALHO ///////////////////////////////// -->
+<div class="fundo">
+<header>
+  <div class="logo"></div>
+  <div class="logo-texto"><h1>SIMULAB</h1><h3>Ambiente virtual de aprendizagem</h3></div>
+  <nav class="nav-direita"><a href="http://ifisica.org">iFisica.org</a></nav>
+</header>
+</div>
+<!-- ////////////////////////////////// FIM CABEÇALHO ///////////////////////////////// -->
+
+<!-- ////////////////////////////////// CORPO ///////////////////////////////// -->
+
+<div id="container">	
+	<div id="apresentacao"><span style="font-weight:400;">Escolha</span> a área.<br><span style="font-weight: 400;">Navegue</span> entre as aulas.<br><span style="font-weight: 400;">Aprenda</span> com as animações.</div>
+	
+	<!-- ////////////////////////////////// MINIATURAS ///////////////////////////////// -->
+	<div id="botoes">
+
+			<a href="#lista-aulas"><img src="icons/btnMec.svg"  class='tem-aulas' id="btnMec" alt="Mecânica"></a>
+			<a href="#lista-aulas"><img src="icons/btnTermo.svg"  id="btnTermo"></a>
+			<a href="#lista-aulas"><img src="icons/btnOndas.svg"   id="btnOndas"></a>
+			<a href="#lista-aulas"><img src="icons/btnOptica.svg" class='tem-aulas' onclick="mostraAula('optica', id, 'animOptica');" id="btnOptica"></a>
+			<a href="#lista-aulas"><img src="icons/btnEletromag.svg"  id="btnEletro"></a>
+			<a href="#lista-aulas"><img src="icons/btnModerna.svg"  id="btnModerna"> </a>
+		
+	</div>
+	<!-- ////////////////////////////////// FIM MINIATURAS ///////////////////////////////// -->
+	
+	<!-- ////////////////////////////////// LISTAS AULAS ///////////////////////////////// -->
+	<div class="lista-aulas" id="lista-aulas">
+		<span id="separador">Aulas</span>
+		
+		<!-- ////////////////////////////////// AULAS MECANICA ///////////////////////////////// -->
+		<ul id="mecanica">
+			<li>Em breve</li>
+		</ul>		
+		<!-- ////////////////////////////////// FIM AULAS MECANICA ///////////////////////////////// -->
+		
+		<!-- ////////////////////////////////// AULAS TERMO ///////////////////////////////// -->
+		<ul id="termo">
+				<li>Em breve</li>
+		</ul>	
+		<!-- ////////////////////////////////// FIM AULAS TERMO ///////////////////////////////// -->
+		
+				
+		<!-- ////////////////////////////////// AULAS ONDAS ///////////////////////////////// -->
+		<ul id="ondas">
+			<li><a href="ondas/aulas/aula_0301/aula_0301.html">MHS I</a></li>
+			<li><a href="ondas/aulas/aula_0302/aula_0302.html">MHS II</a></li>
+			<li><a href="ondas/aulas/aula_0303/aula_0303.html">MHS III</a></li>
+			<li><a href="ondas/aulas/aula_0304/aula_0304.html">Definição</a></li>
+			<li><a href="ondas/aulas/aula_0305/aula_0305.html">Elementos</a></li>
+			<li><a href="ondas/aulas/aula_0306/aula_0306.html">Ondas sonoras</a></li>
+			<li><a href="ondas/aulas/aula_0307/aula_0307.html">Reflexão</a></li>
+			<li><a href="ondas/aulas/aula_0308/aula_0308.html">Refração</a></li>
+			<li><a href="ondas/aulas/aula_0309/aula_0309.html">Interferência</a></li>
+			<li><a href="ondas/aulas/aula_0310/aula_0310.html">Difração</a></li>
+			<li><a href="ondas/aulas/aula_0311/aula_0311.html">Efeito Doppler</a></li>
+		</ul>
+		<!-- ////////////////////////////////// FIM AULAS ONDAS ///////////////////////////////// -->
+		
+		<!-- ////////////////////////////////// AULAS OPTICA ///////////////////////////////// -->
+		<ul id="optica">
+			<li><a href="optica/aulas/aula_0401/aula_0401.html">Luz e cores</a></li>
+			<li><a href="optica/aulas/aula_0402/aula_0402.html">Raios de luz</a></li>
+			<li><a href="optica/aulas/aula_0403/aula_0403.html">Eclipses</a></li>
+		</ul>
+		<!-- ////////////////////////////////// FIM AULAS OPTICA ///////////////////////////////// -->
+		
+		<!-- ////////////////////////////////// AULAS ELETROMAGNETISMO ///////////////////////////////// -->
+		<ul id="eletro">
+			<li>Em breve</li>
+		</ul>
+		<!-- ////////////////////////////////// FIM AULAS ELETROMAGNETISMO ///////////////////////////////// -->
+		
+		<!-- ////////////////////////////////// AULAS FISICA MODERNA ///////////////////////////////// -->
+		<ul id="moderna">
+			<li>Em breve</li>
+		</ul>
+		<!-- ////////////////////////////////// FIM AULAS FISICA MODERNA ///////////////////////////////// -->
+	</div>
+	<!-- ////////////////////////////////// FIM LISTAS AULAS ///////////////////////////////// -->
+	
+	<!-- ////////////////////////////////// LISTAS ANIMACOES ///////////////////////////////// -->
+	<div class="lista-animacoes">
+		<span id="separador1">Animações</span>
+		
+		<!-- ////////////////////////////////// ANIMAÇÕES MECANICA ///////////////////////////////// -->
+		<ul id="animMec">
+			<li>Em breve</li>
+		</ul>		
+		<!-- ////////////////////////////////// FIM ANIMAÇÕES MECANICA ///////////////////////////////// -->
+		
+		<!-- ////////////////////////////////// ANIMAÇÕES TERMODINÂMICA ///////////////////////////////// -->		
+		<ul id="animTermo">
+			<li>Em breve</li>
+		</ul>
+		<!-- ////////////////////////////////// FIM ANIMAÇÕES TERMODINÂMICA ///////////////////////////////// -->
+		
+		<!-- ////////////////////////////////// ANIMAÇÕES ONDAS ///////////////////////////////// -->
+		<ul id="animOndas">
+			<li>Em breve</li>
+		</ul>
+		<!-- ////////////////////////////////// FIM ANIMAÇÕES ONDAS ///////////////////////////////// -->
+		
+		<!-- ////////////////////////////////// ANIMAÇÕES OPTICA ///////////////////////////////// -->
+		<ul id="animOptica">
+			<li>Em breve</li>
+		</ul>
+		<!-- ////////////////////////////////// FIM ANIMAÇÕES OPTICA ///////////////////////////////// -->
+		
+		<!-- ////////////////////////////////// ANIMAÇÕES ELETROMAGNETISMO ///////////////////////////////// -->
+		<ul id="animEletro">
+			<li>Em breve</li>
+		</ul>
+		<!-- ////////////////////////////////// FIM ANIMAÇÕES ELETROMAGNETISMO ///////////////////////////////// -->
+		
+		<!-- ////////////////////////////////// ANIMAÇÕES FISICA MODERNA ///////////////////////////////// -->
+		<ul id="animModerna">
+			<li>Em breve</li>
+		</ul>
+		<!-- ////////////////////////////////// FIM ANIMAÇÕES FISICA MODERNA ///////////////////////////////// -->
+		
+	</div>
+	<!-- ////////////////////////////////// FIM LISTAS ANIMACOES ///////////////////////////////// -->
+</div>
+<!-- ////////////////////////////////// FIM CORPO ///////////////////////////////// -->
+<footer>
+ <ul>
+   <li class="lead">Fale Conosco</li>
+   <li><a href="mailto:simulab@ifisica.org">simulab@ifisica.org</a></li>
+</ul>
+
+  <ul>
+    <li class="lead">Créditos</li>
+    <li class="lead">Aulas e animações</li>
+    <li>Prof. Geraldo Felipe (IFRN-CNAT)</li>
+    <li class="lead">Design</li>
+    <li>Pedro Henrique Oliveira (IFRN-CNAT)</li>
+    <li>Tuane Salviano Peres (IFRN-CNAT)</li>
+  </ul>
+  <span><a href="#">Topo</a></span>
+  <div class="index-logo"></div>
+</footer>
+</body>
+</html>

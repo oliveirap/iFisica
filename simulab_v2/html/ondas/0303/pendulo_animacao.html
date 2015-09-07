@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<body>
+    <canvas id="myCanvas" width="450" height="350"></canvas>
+	<script src="ifscript.js"></script>	
+    <script type="text/javascript">
+		
+	  //--------------------------------------------------------------------------------------------------
+		var canvas = document.getElementById('myCanvas');
+		var ctx = canvas.getContext('2d');
+		//VARIÁVEIS PARA DESENHAR O CONTEXTO
+		var x0 = 100;
+		var y0 = 250;
+		var L = 200;
+		var x1 = x0;
+		var y1 = y0 - L;		
+		var R = 60;
+		var w = 0.3;
+		var tempo = 0;
+		var validar_movimento = false;
+		var validar_projecao = false;
+		var px = R;
+		var py = y0;
+		var angR;
+		var h;
+		
+		//
+		var bx1 = 280;
+		var by1 = 110;
+		var bx2 = bx1;
+		var by2 = by1 + 40
+		var bx3 = bx1;
+		var by3 = by2 + 40		
+
+//BOTÕES (PROGRAMAÇÃO) -------------------------------------------------------------------------
+		var b = 7		
+		function cliqueMouse(e){
+			// INICIAR
+			if(e.pageX > bx1 + b && e.pageX < bx1 + 120 + b && e.pageY > by1 + b && e.pageY < by1 + 25 + b){			
+				if(validar_movimento == false){
+					validar_movimento = true;
+				}else{
+					validar_movimento = false;				
+				}
+			}
+			
+			if(e.pageX > bx3 + b && e.pageX < bx3 + 120 + b && e.pageY > by3 + b && e.pageY < by3 + 25 + b){			
+				tempo = 0;	
+				px = R;
+				validar_movimento = false;
+			}
+			
+			if(e.pageX > bx2 + b && e.pageX < bx2 + 120 + b && e.pageY > by2 + b && e.pageY < by2 + 25 + b){			
+				if(validar_projecao == false){
+					validar_projecao = true;
+				}else{
+					validar_projecao = false;				
+				}
+			}
+
+			
+		}	
+		canvas.onmousedown = cliqueMouse;		
+		
+		function desenhar(){
+			//DESENHO DA ESTRUTURA
+			ctx.clearRect(0,0,canvas.width,canvas.height);// Apagar tudo para redesenhar
+			retangulovazado(2,2,canvas.width - 5,327,1,'black');	//BORDA		
+			if(validar_movimento == true){
+				tempo = tempo + 0.05;				
+			}
+			px = R*Math.cos(w*tempo);	
+			angR = Math.asin(px/L);
+			h = L*Math.cos(angR);
+			linhareta(x1,y1,x0 + px,y1 + h,1,'rgba(100,100,100,1)');//Raio
+			circulo(x0 + px,y1 + h,5,'black','black');//Massa pendular
+			superficie(x0 + 50,y0 - L,100,180); //Teto 
+			//
+			if(validar_projecao == true){
+				escala(x0 - R,y0 + 20,R,'red',0);
+				escala(x0,y0 + 20,R,'red',0);
+				circulo(x0 + px,y0 + 20,3,'blue','blue');//Projeção	
+				retavertical(x0,y0 + 10,215,0.2,'rgba(0,0,0,0.5');	
+			}			
+			//
+			retangulovazado(bx1,by1,120,25,1,'black');
+			escrever('Iniciar/Pausa',8,'verdana',bx1 + 20,by1 + 16,'black');
+			
+			retangulovazado(bx3,by3,120,25,1,'black');			
+			escrever('Voltar',8,'verdana',bx3 + 40,by3 + 16,'black');
+			
+			retangulovazado(bx2,by2,120,25,1,'black');
+			escrever('Projeção',8,'verdana',bx2 + 34,by2 + 16,'black');
+			
+			//<---------------------------------------->			
+			escrever('iFisica.org',8,'verdana',385,345,'rgba(0,0,80,1');				
+		}
+		
+		setInterval(desenhar,10);		
+		
+		// ------------------------------------------------------------------------------------------	
+    </script>
+  </body>
+</html>

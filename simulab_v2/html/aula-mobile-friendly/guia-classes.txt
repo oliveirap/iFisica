@@ -1,0 +1,23 @@
+TITULOS:
+	h3	.titulo -> Classe geral. Todos devem ter!!
+		+ .titulo-aula -> Nome da aula, usado no cabeçalho do corpo.
+		+ . topico-aula -> Usado nos tópicos da aula. Ex. 3.2 - Velocidade da Luz
+		+ .titulo-links -> Usado na sessão Links Externos
+
+
+LISTAS: 
+	ul	.lista -> Lista não ordenada no corpo das aulas
+		.lista-links -> Lista da sessão de links externos
+
+	ol	.lista -> Classe obrigatoria
+		+ .lista-numerada -> Lista do corpo da aula com items numerados
+		
+	
+
+PARÁGRAFOS:
+	p 	.p-aula -> Classe obrigatoria para parágrafos do corpo da aula
+		.legenda -> Parágrafos de legendas de imagens
+
+IMAGENS:
+	img .imagem -> Obriatório para todas as imagens
+		função onClick='imgRedir(this.src)' para imagens maiores que 700px 

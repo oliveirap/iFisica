@@ -1,0 +1,41 @@
+//LISTAS
+.lista-navegacao
+	list-style-type: none
+	@include clearfix() 
+
+.item-navegacao
+	float: left
+
+.lista-numerada
+	list-style-type: decimal
+
+.lista li
+	text-align: justify
+	@media (max-width: 480px)
+		text-align: left
+	margin: 20px 60px
+	line-height: 1.6
+
+.lista-links
+	list-style-type: none
+	@include clearfix
+	margin: 0 
+	@media (max-width: 480px)
+		font-size: 14px
+
+.lista-links li
+	float: left
+	margin: 20px 5px
+
+.lista-links a 
+	color: white
+
+.lista-rodape
+	list-style-type: none
+	font-size: 12px
+
+.lista-rodape li
+	margin-bottom: 10px
+	line-height: 1.2
+	&:last-child
+		margin-bottom: 0

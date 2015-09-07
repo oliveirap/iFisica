@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<title>SIMULAB - Animação</title>
+	<link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/animacao.css">
+	<script type="text/javascript">
+		var aparece  = true;
+		function showStuff(id) {	
+			if(aparece){
+			document.getElementById(id).style.display = 'block';
+			aparece = false;
+			}
+			else if(aparece == false) {document.getElementById(id).style.display = 'none'; aparece = true;}
+		}
+</script>
+
+	</head>
+<body>
+<!-- //////////////////// POSICIONAMENTO ////////////////////////// -->
+<div class="corpo">
+
+	<!-- ////////////////// TITULO /////////////////////////// -->
+	<div class="titulo">
+	Onda Mista
+	</div>
+	
+	<!-- ///////////////////////// ANIMACAO //////////////////////////// -->
+	<iframe src="animacoes/simulacao.html" id="animacao">Seu navegador não suporta iframes.</iframe>
+	<div class="comentario">
+		<div id="botao-comentario" onclick="showStuff('texto');return false;">Comentários</div>
+		<div id="texto">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, officia, porro, vero nihil dolorem esse perspiciatis non quas illo nobis qui unde maxime laudantium quidem aperiam. Nisi, eaque rerum quae.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, a, eos, rem sequi atque fugiat quibusdam ipsum sapiente quis rerum mollitia maiores vero ipsa eligendi cum aliquid quam suscipit illo.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, eveniet, libero culpa voluptas rem enim laboriosam accusamus eaque minus quaerat vel voluptates tenetur perspiciatis molestiae sint quo odit consequuntur alias.loLorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, officia, asperiores libero ullam atque est modi doloremque ex neque illo vel laborum quam ut nihil distinctio! Culpa, optio dolorum illum!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, officia, porro, vero nihil dolorem esse perspiciatis non quas illo nobis qui unde maxime laudantium quidem aperiam. Nisi, eaque rerum quae.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, a, eos, rem sequi atque fugiat quibusdam ipsum sapiente quis rerum mollitia maiores vero ipsa eligendi cum aliquid quam suscipit illo.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, eveniet, libero culpa voluptas rem enim laboriosam accusamus eaque minus quaerat vel voluptates tenetur perspiciatis molestiae sint quo odit consequuntur alias.loLorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, officia, asperiores libero ullam atque est modi doloremque ex neque illo vel laborum quam ut nihil distinctio! Culpa, optio dolorum illum!</div>
+	</div>	
+	<footer>
+	<a href="http://www.ifisica.org" target="_new">iFisica.org</a> - <a href="http://simulab.ifisica.org">SIMULAB</a> | Programação: Prof. Geraldo Felipe - IFRN CNAT | Design: Pedro Oliveira e Tuane Peres
+	</footer>
+
+</div>
+
+</body>
+</html>

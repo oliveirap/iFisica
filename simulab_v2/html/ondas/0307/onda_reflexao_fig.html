@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title> Reflexão </title>	
+	</head>
+	<canvas id="canvas01" width="600" height="245"></canvas>		
+	<script src="ifscript.js"></script>
+	<script type="text/javascript">	
+		var canvas = document.getElementById("canvas01");
+		var ctx = canvas.getContext("2d");
+		//					
+		var x0 = 20;
+		var y0 = 220;
+		var passox = 0; //trem de ondas
+		var passoy = 0; //trem de ondas
+			
+		//
+		function trem_ondas_01(x0,y0, ang,mult){
+			for(var i=1;i<6;i++){
+				retaangulo(x0 + passox,y0 + passoy,150,1,'black',ang);
+				passox = passox + 20;
+				passoy = passoy + mult*20;
+			}		
+		}
+		//		
+		//retangulovazado(1,1,canvas.width-1,canvas.height-1,1,'black'); // BORDA DA TELA PRINCIPAL
+		superficie(x0 + 30,y0 - 5,480,0); //Solo			
+		trem_ondas_01(x0 + 80,y0 - 100,-45,1); //Incidente
+		trem_ondas_01(x0 + 190,y0 - 226,45,-1);  // Refletida
+		vetor(x0 + 110,y0 - 170,230,'rgba(250,100,100,0.4',45,1); //Direção incidência
+		vetor(x0 + 273,y0 - 7,230,'rgba(250,100,100,0.4',-45,1); //Direção reflexão
+		escrever('ondas incidentes',8,'verdana',x0,y0 - 140,'black');		
+		escrever('ondas refletidas',8,'verdana',x0 + 460,y0 - 140,'black');
+		escrever('Superfície Refletora',8,'verdana',x0 + 200,y0 + 20,'black');
+		//vetor(x0 + 273,y0 - 10,230,'rgba(50,50,250,0.8',-90,1); // Reta Normal
+		
+		
+	</script>
+</html>

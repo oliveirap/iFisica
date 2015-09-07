@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<body onkeydown="whichButton(event)">
+    <canvas id="myCanvas" width="645" height="230"></canvas>
+	<script src="ifscript.js"></script>
+    <script>
+		//--------------------------------------------------------------------------------------------------
+		var canvas = document.getElementById('myCanvas');
+		var ctx = canvas.getContext('2d');
+		var x0 = 30;
+		var y0 = 130;		
+		var A = 40;
+		var frequencia = 0.5;
+		var vel = 100;		
+		var tempo = 0.6;
+		var dist = 10;
+		var limite = 62;	
+		var m1 = new Array();
+		var m2 = new Array();
+		var m3 = new Array();	
+		
+		var i;
+		var py;		
+		var cor1A = 'rgba(0,0,100,0.2)'			
+		// Estrutura Padrão (LAYOUT) ------------------------------------------------------------------------
+		//retangulovazado(5,5,canvas.width - 10,canvas.height - 5,0.5,'rgba(0,0,100,0.5)');
+		reticulado(x0 + 9,y0 - 100,31,11,0.1);
+		//
+		for(i=1;i<limite;i++){
+			m1[i] = x0 + dist
+			dist = dist + 10		 
+		}		
+		retahorizontal(x0 + 8,y0,600,1,'black');
+		escala(x0 + 180,y0 - 60,200,'red',0); //comprimento de onda 1		
+		escala(x0 + 330,y0 + 20,100,'red',0); //comprimento de onda 3
+		escala(x0 - 10,y0 - 40, 40,'rbb(0,80,0)',90); // amplitude
+		escrever('A',12,'verdana',x0 - 30, y0 - 15,'rgb(0,40,0)');
+		escrever('l',18,'symbol',x0 + 270, y0 - 70,'red');		
+		escrever('l',18,'symbol',x0 + 358, y0 + 50,'red');
+		escrever('/2',12,'verdana',x0 + 378, y0 + 49,'red');		
+		//					
+		for(i=1;i<limite;i++){
+			m2[i] = A*Math.sin(2*Math.PI*frequencia*(m1[i]/vel - tempo));			
+		}			
+		for(i=1;i<limite;i++){
+			circulo(m1[i], y0 + m2[i],3,'blue','blue');
+		}		
+		// ------------------------------------------------------------------------------------------	
+    </script>
+  </body>
+</html>

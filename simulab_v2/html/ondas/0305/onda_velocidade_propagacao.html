@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<body onkeydown="whichButton(event)">
+    <canvas id="myCanvas" width="660" height="340"></canvas>
+	<script src="ifscript.js"></script>
+    <script>
+		window.requestAnimFrame = (function(callback) {
+			return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+			function(callback) {
+			  window.setTimeout(callback, 1000 / 1);
+			};
+		})();
+	  //--------------------------------------------------------------------------------------------------
+		var canvas = document.getElementById('myCanvas');
+		var ctx = canvas.getContext('2d');
+		var x0 = 20;
+		var y0 = 130;
+		var dt = 0.01;
+		var A = 40;
+		var frequencia = 0.5;
+		var vel = 100;
+		var lambda = 100;
+		var tempo = 0.32;
+		var dist = 10;
+		var limite = 60;	
+		var m1 = new Array();
+		var m2 = new Array();
+		var m3 = new Array();			
+		var dx = 410;
+		var i;
+		var py;
+		var deslocx = 0;
+		var cor1A = 'rgba(0,0,100,0.2)'
+		var validar_movimento = false;
+		//Botão Animar
+		var w1 = 75;
+		var h1 = 30;
+		var x1 = x0 + 440;
+		var x2 = x1 + w1;
+		var y1 = y0 + 115;
+		var y2 = y1 + h1;		
+		//
+		//Botão Voltar
+		var w2 = 75;
+		var h2 = 30;
+		var x1b = x0 + 535;
+		var x2b = x1b + w2;
+		var y1b = y0 + 115;
+		var y2b = y1b + h2;
+		//
+		// Estrutura Padrão (LAYOUT) ------------------------------------------------------------------------
+		retangulovazado(5,5,canvas.width - 10,canvas.height - 60,2,'rgba(0,0,100,1)');	
+		escrever('iFisica.org / SIMULAB',8,'verdana',dx + 110,canvas.height - 35,'rgba(0,0,80,1');				
+		//BOTÕES (PROGRAMAÇÃO) -------------------------------------------------------------------------
+		var b = 7
+		function cliqueMouse(e){
+			// INICIAR
+			if(e.pageX > x1 + b && e.pageX < x2 + b && e.pageY > y1 + b && e.pageY < y2 + b){					
+				validar_movimento = true;
+			}
+			// VOLTAR
+			if(e.pageX > x1b + b && e.pageX < x2b + b && e.pageY > y1b + b && e.pageY < y2b + b){				
+				tempo = 0.32;
+				deslocx = 0;
+				validar_movimento = false;
+			}			
+		}	
+		canvas.onmousedown = cliqueMouse;
+		//
+		for(i=1;i<limite;i++){
+			m1[i] = x0 + dist
+			dist = dist + 10		 
+		}	
+		
+		// FUNÇÃO RESPONSÁVEL PELA ANIMAÇÃO ---------------------------------------------------------		
+		function animate(canvas) {
+			ctx.clearRect(10, 10, canvas.width - 20, canvas.height - 70);
+			//retangulovazado(0,0,canvas.width,canvas.height,2,'rgba(0,0,100,1)');	
+			if(validar_movimento == true){
+				if(tempo < 2.3){
+					tempo = tempo + dt;
+					deslocx = deslocx + vel*dt;
+				}
+			}			
+			retahorizontal(x0 + 8,y0,600,1,'red');
+			escala(x0 + 160,y0 - 80,200,'red',0); //comprimento de onda
+			//escala(x0 -10,y0, 40,'red',90); // amplitude
+			reticulado(x0 + 9,y0 - 100,31,11,0.2);
+			retangulopreenchido(x0 + 9 + 147,y0 - 100,8,200,0,'rgba(200,200,0,0.2)', 'black');//marcador 1
+			retangulopreenchido(x0 + 9 + 147 + deslocx,y0 - 100,8,200,0,'rgba(200,200,0,0.2)', 'black');
+			escrever('l',16,'symbol',x0 + 254,y0 - 85,'black');
+			//marcador 2
+			//					
+			for(i=1;i<limite;i++){
+				m2[i] = A*Math.sin(2*Math.PI*frequencia*(m1[i]/vel - tempo));			
+			}			
+			for(i=1;i<limite;i++){
+				circulo(m1[i], y0 + m2[i],3,'blue','blue');
+			}
+			// BOTÕES (DESENHO)
+			retangulopreenchido(x1,y1,w1,h1,2,cor1A,'blue');	
+			escrever('Animar',10,'verdana',x1 + 10,y1 + 20,'black');
+			
+			retangulopreenchido(x1b,y1b,w2,h2,2,cor1A,'blue');	
+			escrever('Voltar',10,'verdana',x1b + 15,y1b + 20,'black');
+			
+			//Redesenhar tudo -----------------------------------------------------------------------------
+			requestAnimFrame(function() {
+			  animate(canvas);
+			});
+		}  			  
+		animate(canvas); 
+		// ------------------------------------------------------------------------------------------	
+    </script>
+  </body>
+</html>

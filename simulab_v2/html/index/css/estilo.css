@@ -1,0 +1,427 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "Amble Regular";
+  src: url("Amble-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: #ecf0f1;
+  color: #2c3e50;
+}
+
+.fundo {
+  /* Fundo 100% cabeçalho */
+  width: 100%;
+  background: #2c3e50;
+}
+
+header {
+  margin: 0 auto;
+  color: white;
+  background: #2c3e50;
+  box-sizing: border-box;
+  padding: 20px 50px;
+  width: 100%;
+  max-width: 1200px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+@media (max-width: 496px) {
+  header {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    text-align: center;
+  }
+
+  header .logo {
+    -webkit-align-self: center;
+        -ms-flex-item-align: center;
+            align-self: center;
+    margin-bottom: 20px;
+  }
+}
+header h1 {
+   font-family: 'Amble Regular';
+  font-size: 32px;
+  font-weight: normal;
+  line-height: 0.8
+}
+header h3 {
+  font-weight: normal;
+  font-size: 18.666667px;
+  font-variant: small-caps;
+}
+header a {
+  text-decoration: none;
+  color: white;
+}
+header .logo {
+  margin-right: 10px;
+  background: transparent url(../images/logo-flat.svg) center no-repeat;
+ 
+  width: 100px;
+  height: 100px;
+}
+
+header .logo-texto {
+  -webkit-align-self: center;
+      -ms-flex-item-align: center;
+          align-self: center;
+  margin-right: 20px;
+  margin-right-background: blue;
+  margin-right-flex-grow: 1;
+ 
+}
+header .nav-direita {
+  margin-top: 20px;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  text-align: right;
+  -webkit-align-self: center;
+      -ms-flex-item-align: center;
+          align-self: center;
+}
+@media (max-width: 570px) {
+  header .nav-direita {
+    text-align: center;
+  }
+}
+
+footer {
+  color: #fff;
+  font-size: 14px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  background: #1d1d1d;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  padding: 10px 10px;
+}
+
+footer ul {
+  padding: 10px;
+  list-style: none;
+}
+
+footer ul > :first-child {
+  font-size: 16px;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+footer a:hover {
+  border-bottom: 1px solid white;
+}
+
+li.lead {
+  font-weight: 400;
+}
+
+footer li {
+  font-weight: 300;
+}
+
+footer span {
+  padding: 10px;
+  display: block;
+  text-align: right;
+}
+
+#container {
+  
+  font-weight: 300;
+  font-size: 24pt;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px;
+  padding: 1em;
+  padding-top: 0;
+  overflow: auto;
+  margin: 1em auto 0 auto;
+}
+
+#subtitulo {
+  /* Ambiente Virtual de Aprendizagem */
+  font-family: 'Amble Regular', sans-serif;
+  font-weight: 300;
+  font-size: 14pt;
+  font-variant: small-caps;
+}
+
+#nav-right {
+  /* Menu superior esquerdo */
+ 
+  font-weight: 300;
+  font-size: 12pt;
+  float: right;
+}
+
+#nav-right ul {
+  overflow: hidden;
+  list-style: none;
+}
+
+#nav-right li {
+  float: left;
+  margin-right: 2em;
+}
+
+#nav-right a {
+  line-height: 30px;
+  color: #fff;
+  text-decoration: none;
+}
+
+#apresentacao {
+  /* Texto apresentativo */
+  float: left;
+  width: 40%;
+  margin-bottom: 0;
+  font-weight: 300;
+}
+
+#botoes {
+  /* DIV Miniaturas */
+  box-sizing: border-box;
+  text-align: right;
+  max-width: 600px;
+  width: 60%;
+  float: right;
+  margin: 0;
+}
+
+#botoes img {
+  /* Divide corretamente o espaçamento das miniaturas */
+  margin: 0;
+  margin-right: 20px;
+  margin-bottom: 20px;  
+  opacity: 0.5;
+}
+#botoes img.tem-aulas{
+  opacity: 1;
+  cursor: pointer;
+}
+
+img#btnOndas, img#btnModerna {
+  /* Divide corretamente o espaçamento das miniaturas */
+  margin-right: 0px;
+}
+
+/* Links das aulas */
+.lista-aulas {
+  font-size: 14pt;
+  float: left;
+  box-sizing: border-box;
+  padding-right: 1em;
+  width: 20%;
+  padding: 1em;
+}
+
+.lista-animacoes {
+  font-size: 14pt;
+  float: left;
+  box-sizing: border-box;
+  width: 20%;
+  padding: 1em;
+}
+
+.lista-aulas ul, .lista-animacoes ul {
+  padding-top: 1em;
+  list-style: none;
+  text-indent: 5px;
+  display: none;
+}
+
+.lista-aulas a, .lista-animacoes a {
+  text-decoration: none;
+  color: #2c3e50;
+}
+
+.lista-aulas a:hover, .lista-animacoes a:hover {
+  text-decoration: underline;
+}
+
+/* Fim estilo links das aulas */
+#botoes img {
+  /*Transição das miniaturas */
+  -webkit-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+}
+
+#separador, #separador1 {
+  display: none;
+  font-weight: 400;
+}
+
+#nome-coluna {
+ 
+  font-weight: 300;
+  font-size: 15pt;
+}
+
+.contato, .creditos {
+  min-width: 200px;
+  float: left;
+  box-sizing: border-box;
+  padding-right: 10px;
+  padding-bottom: 10px;
+}
+
+.contato a {
+  text-decoration: none;
+  color: #FFF;
+}
+
+.contato a:hover {
+  border-bottom: 1px solid #fff;
+}
+
+@media screen and (max-width: 1105px) {
+  #apresentacao {
+    font-size: 20pt;
+  }
+}
+@media screen and (max-width: 1075px) {
+  #botoes {
+    /* DIV Miniaturas */
+    width: 420px;
+  }
+
+  #botoes img#btnOndas, #botoes img#btnModerna {
+    /* Divide corretamente o espaçamento das miniaturas */
+    margin-right: 20px;
+  }
+}
+@media screen and (max-width: 935px) {
+  #apresentacao {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  #botoes {
+    float: left;
+    width: 310px;
+    padding: 0;
+    margin: 0;
+  }
+
+  #botoes img, #botoes img#btnOndas, #botoes img#btnModerna {
+    width: 150px;
+    margin: 0;
+  }
+
+  .lista-aulas, .lista-animacoes {
+    float: left;
+    padding-left: 1em;
+    width: 200px;
+  }
+
+  .lista-aulas ul, .lista-animacoes ul {
+    padding-left: 0.5em;
+  }
+}
+@media screen and (max-width: 753px) {
+  .lista-aulas, .lista-animacoes {
+    padding-left: 0.5em;
+    width: 200px;
+  }
+
+  .lista-aulas ul, .lista-animacoes ul {
+    padding-left: 0.8em;
+  }
+}
+@media screen and (max-width: 540px) {
+  .lista-aulas, .lista-animacoes {
+    float: left;
+  }
+
+  #nav-right {
+    margin-top: 0.5;
+    clear: both;
+    float: none;
+  }
+
+  #nav-right li {
+    float: left;
+    margin-right: 1em;
+  }
+
+
+
+  #subtitulo {
+    display: none;
+  }
+}
+@media screen and (max-width: 420px) {
+  #apresentacao {
+    font-size: 18pt;
+  }
+}
+@media screen and (max-width: 370px) {
+
+  #container {
+    padding: 0;
+    margin: 0;
+    margin-top: 10px;
+    margin-left: 0px;
+    overflow: auto;
+  }
+
+  #apresentacao {
+    font-size: 14pt;
+    margin-left: 10px;
+    width: 320px;
+  }
+
+  #botoes img, #botoes img#btnOndas, #botoes img#btnModerna {
+    width: 140px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    float: left;
+    margin-right: 0;
+  }
+
+  #botoes {
+    margin: 0;
+    width: 320px;
+  }
+
+  .lista-aulas, .lista-animacoes {
+    margin: 0 auto;
+    width: 200px;
+  }
+}

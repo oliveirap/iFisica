@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<body onkeydown="whichButton(event)">
+    <canvas id="myCanvas" width="565" height="165"></canvas>
+	<!--<script src="C:\Users\Dell\Dropbox\biblioteca.js"></script>-->
+	<script src="ifscript.js"></script>
+    <script>
+		//--------------------------------------------------------------------------------------------------
+		var canvas = document.getElementById('myCanvas');
+		var ctx = canvas.getContext('2d');
+		var x0 = 5;
+		var y0 = 85;
+		var dx = 410;
+		var px = x0;
+		var py = y0;
+		var tempo = 0;			// CONTADOR TEMPORAL		
+		var A0 = 64;			// AMPLITUDE INICIAL
+		var A = A0;				// AMPLITUDE
+		var w = 0.8; 			// FREQUÊNCIA
+		var amort = 15; 		// TAXA DE AMORTECIMENTO
+		var N = 0;				// PASSO USADO PARA DESENHAR O GRÁFICO	(linha 57)	
+		var teta = Math.PI;
+		//
+		function escalagraduadaY4(x0,y0,tamanho,escala,cor){
+			var valor = -tamanho*escala;
+			var passo = 0;
+			var i;
+			var dy = 5;	
+			var ex = 0;	
+			for (i=0;i <= 2*tamanho;i++){
+				if(valor >= 0 && valor < 10){
+					ex = 6;
+				}
+				if(valor >= 10){
+					ex = 0;
+				}
+				if(valor < 0){
+					ex = -2;
+				}
+				if(valor < -9){
+					ex = -7;
+				}
+				escrever8(valor,x0 + ex,y0 - dy + passo, cor);	
+				passo = passo + 40;	
+				valor = valor + escala;
+			}
+		}
+		//
+		//retangulovazado(5,5,canvas.width - 10,canvas.height - 5,2,'rgba(0,0,100,1)');
+		reticulado(x0,y0-80,29,9,0.2);
+		retahorizontal(x0,y0,560,1,'red');		
+		//		
+		// FUNÇÃO RESPONSÁVEL PELA ANIMAÇÃO ---------------------------------------------------------		
+		for (i=1;i<560;i++){
+			ctx.beginPath();
+			ctx.moveTo(px,py + N);
+			px = px + 1;
+			tempo = tempo + 0.0985;
+			N = A*Math.sin(w*tempo + teta);
+			A = A0*Math.exp(-tempo/amort);
+			
+			
+			ctx.lineTo(px, py + N);
+			ctx.lineWidth = 2;
+			ctx.strokeStyle = 'blue';
+			ctx.stroke();
+		}		
+		// ------------------------------------------------------------------------------------------	
+    </script>
+  </body>
+</html>

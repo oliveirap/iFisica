@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title> Reflexão </title>	
+	</head>
+	<canvas id="canvas01" width="580" height="245"></canvas>		
+	<script src="ifscript.js"></script>
+	<script type="text/javascript">	
+		var canvas = document.getElementById("canvas01");
+		var ctx = canvas.getContext("2d");
+		//					
+		var x0 = 0;
+		var y0 = 220;
+		var passox = 0; //trem de ondas
+		var passoy = 0; //trem de ondas
+			
+		//
+		function trem_ondas_01(x0,y0, ang,mult){
+			for(var i=1;i<6;i++){
+				retaangulo(x0 + passox,y0 + passoy,150,1,'black',ang);
+				passox = passox + 20;
+				passoy = passoy + mult*20;
+			}		
+		}
+		//ARCO DE CIRCUNFERÊNCIA PREENCHIDO
+		function arco2(x0,y0,raio,a1,a2,cor){
+			var ang1 = a1*Math.PI/180;
+			var ang2 = a2*Math.PI/180;
+			ctx.beginPath();
+			ctx.moveTo(x0,y0);
+			ctx.arc(x0, y0, raio, ang1, ang2, false);
+			ctx.fillStyle = cor;
+			ctx.fill();		
+		}
+		//		
+		//retangulovazado(1,1,canvas.width-1,canvas.height-1,1,'black'); // BORDA DA TELA PRINCIPAL
+		superficie(x0 + 30,y0 - 5,480,0); //Solo		
+		arco2(x0 + 273, y0 - 8,60,225,315,'rgba(0,0,220,0.2)');
+		escrever('q',16,'symbol',x0 + 240,y0 - 80,'black');
+		escrever('I',10,'verdana',x0 + 252,y0 - 75,'black');
+		
+		escrever('q',16,'symbol',x0 + 290,y0 - 80,'black');
+		escrever('R',10,'verdana',x0 + 302,y0 - 75,'black');
+		
+		vetor(x0 + 110,y0 - 170,230,'rgba(250,100,100,0.6',45,1); //Direção incidência
+		vetor(x0 + 273,y0 - 7,230,'rgba(250,100,100,0.6',-45,1); //Direção reflexão
+		escrever('direção das ondas',8,'verdana',x0 + 20,y0 - 140,'black');	
+		escrever('incidentes',8,'verdana',x0 + 20,y0 - 120,'black');		
+		escrever('direção das ondas',8,'verdana',x0 + 460,y0 - 140,'black');
+		escrever('refletidas',8,'verdana',x0 + 460,y0 - 120,'black');
+		escrever('Superfície Refletora',8,'verdana',x0 + 200,y0 + 20,'black');		
+		linhapontilhada(x0 + 273,y0 - 10,18,-90); // Reta Normal
+		escrever('Reta Normal',8,'verdana',x0 + 280,y0 - 180,'black');
+		
+		
+		
+	</script>
+</html>

@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	
+	<link rel="stylesheet" href="css/estilo.css">
+	
+	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="icons/apple-touch-icon-57x57.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="icons/apple-touch-icon-114x114.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="icons/apple-touch-icon-72x72.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="icons/apple-touch-icon-144x144.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="60x60" href="icons/apple-touch-icon-60x60.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="icons/apple-touch-icon-120x120.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="icons/apple-touch-icon-76x76.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="icons/apple-touch-icon-152x152.png" />
+	<link rel="icon" type="image/png" href="icons/favicon-196x196.png" sizes="196x196" />
+	<link rel="icon" type="image/png" href="icons/favicon-96x96.png" sizes="96x96" />
+	<link rel="icon" type="image/png" href="icons/favicon-32x32.png" sizes="32x32" />
+	<link rel="icon" type="image/png" href="icons/favicon-16x16.png" sizes="16x16" />
+	<link rel="icon" type="image/png" href="icons/favicon-128.png" sizes="128x128" />
+	<meta name="application-name" conteudo="&nbsp;"/>
+	<meta name="msapplication-TileColor" conteudo="#FFFFFF" />
+	<meta name="msapplication-TileImage" conteudo="icons/mstile-144x144.png" />
+	<meta name="msapplication-square70x70logo" conteudo="icons/mstile-70x70.png" />
+	<meta name="msapplication-square150x150logo" conteudo="icons/mstile-150x150.png" />
+	<meta name="msapplication-wide310x150logo" conteudo="icons/mstile-310x150.png" />
+	<meta name="msapplication-square310x310logo" conteudo="icons/mstile-310x310.png" />
+	
+	<script src="ifscript.js"></script>	
+	
+	<title>MHS III</title>
+	
+</head>
+<body>
+	<div class="corpo">  <!-- DIV geral. Não remover -->
+	
+		<!-- Inicio cabeçalho -->
+		<div class="cabecalho">
+			<div class="container-centro">
+				<div class="logo"><a href="http://simulab.ifisica.org">SIMULAB</a></div>
+				<div class="nav">
+					<ul>						
+						<li><a href="../aula_0302/aula_0302.html">Anterior</a></li>
+						<li><a href="../aula_0304/aula_0304.html">Próxima</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- Fim cabeçalho -->
+		
+		<!-- DIV alinhada ao centro, para conteúdo. Não remover -->
+		<div class="conteudo"> <!-- Não mexer -->
+			<div class="container-conteudo-centro"> <!-- Inicio DIV essencial para o contéudo -->		
+				
+				<header>Ondulatória - Aula 03<br>Movimento Harmônico Simples III<hr></header>
+				
+				<h3>3.1 Período e Frequência em um Pêndulo</h3>	
+				<hr>
+				
+				<p>	
+				
+					Considere um pequeno corpo de massa <b>m</b> preso em uma extremidade de um fio de comprimento <b>L</b> cuja outra extremidade superior está presa em um suporte fixo qualquer. Deslocamos então esse corpo um pouco para a direita e o soltamos. Temos um movimento pendular fácil de reproduzir e de perceber que é um movimento periódico. O que não percebemos tão facilmente é que, em certas condições, esse movimento pode ser modelado matematicamente como um MHS. Mas uma análise na simulação abaixo permite essa visualização.
+				
+				</p>				
+				
+				<iframe src="pendulo_animacao.html" width = "470" height = "370" class="animacao"> </iframe>
+				
+				<p>
+				
+					Observe que a projeção da posição da massa pendular sobre um eixo horizontal descreve um MHS. Isso é verdade desde que o ângulo inicial que o fio faz com a direção vertical não seja muito grande.
+				
+				</p>
+				
+				<p>
+				
+					Analisando esse fenômeno por meio de um experimento real (lembre-se das aulas no laboratório), alterando a massa pendular e o comprimento do fio, concluímos que:
+					
+				</p>
+				
+				<ol class="lista1">
+					<li> O período de oscilação não depende da massa.</li>
+					<li>O período de oscilação depende do comprimento do fio. Diminuindo o comprimento do fio, o período diminui e, consequentemente, a frequência aumenta.</li>
+				</ol>
+				
+				<p>
+				
+					Não tão simples de concluir, mas possível com alguma álgebra ou com experimentos mais sofisticados, é que o período de oscilação depende do campo gravitacional. Aumentando o campo gravitacional o período aumenta.
+				
+				</p>
+				
+				<p>
+				
+					De posse dessas informações, podemos deduzir uma expressão matemática para o cálculo do período de oscilação de uma massa pendular usando análise dimensional.
+				
+				</p>
+				
+				<img src="images/figura_01.jpg" alt="Período de oscilação de uma massa pendular">
+				
+				<p>
+				
+					Sabendo que a frequência é o inverso do período, temos que:
+				
+				</p>
+				
+				<img src="images/figura_02.jpg" alt="Frequência de oscilação de uma massa pendular">
+				
+				<p>
+				
+					O vídeo abaixo mostra a plástica visual de um conjunto de pêndulos com diferentes comprimentos e, consequentemente, diferentes frequências de oscilação. Observe com cuidado, e percebe que cada pêndulo oscila com frequência constante durante o experimento!
+				
+				</p>
+				
+				<iframe width="420" height="315" src="https://www.youtube.com/embed/WMz0RJukj0A" class="video"></iframe>
+				<br><br>
+				<hr>
+				<h3>3.2 Oscilações Amortecidas</h3>
+				<hr>
+				
+				<p>
+				
+					No sistema massa-mola que estudamos, as forças dissipativas não foram consideradas. Porém, elas existem. Para que uma oscilação continue com amplitude constante é necessário que se reponha a energia dissipada. Isso acontece com os relógios de pêndulo, por exemplo, conforme mostrado abaixo, onde energia potencial gravitacional é usada para repor a energia dissipada no movimento do pêndulo. Também é possível repor essa energia com energia potencial elástica.
+				
+				</p>
+				
+				<img src="images/figura_03.jpg" alt="Pêndulo"><div class="legenda">Fonte: Google Imagens</div>
+				
+				<p>Entretanto, a dissipação de energia pode ser desejada em um sistema oscilante, como acontece com o sistema de amortecimento de veículos, que funciona a base de molas.</p>
+				
+				<img src="images/figura_04.jpg" alt="Amortecimento"><div class="legenda">Fonte: Google Imagens</div>
+				
+				<ul class="lista1">
+					<li>A oscilação não é algo desejado em um veículo. Logo, na suspensão dos mesmos, existe um fluido que tem como objetivo dissipar a energia no processo de retorno das molas ao estado de equilíbrio, evitando uma oscilação de longa duração.</li>
+					<li>O gráfico abaixo mostra a amplitude de uma oscilação em função, para uma oscilação amortecida.</li>				
+				<img src="images/figura_05.jpg" alt="Onda sofrendo amortecimento"><br>
+					<li>Importante ressaltar que, mesmo com a dissipação de energia e consequente diminuição da amplitude, a frequência da oscilação permanece constante, até que a amplitude seja nula, e não haja mais oscilação.</li>
+				</ul>
+				
+				<hr>
+				<h3>3.3 Ressonância</h3>
+				<hr>
+				
+				<p>
+				
+					Se energia é fornecida a um sistema oscilante a uma taxa maior do que este dissipa, então a amplitude da oscilação tende a aumentar. Mas existe uma condição onde a transferência de energia é máxima: a frequência da fonte excitadora ser muito próximo (ou igual, em uma condição ideal) da frequência natural do sistema oscilante. Nesse caso, como a transferência de energia é máxima, a amplitude de oscilação também será máxima, podendo causar danos físicos ao sistema.
+					
+				</p>
+				
+				<p>
+				
+					O vídeo abaixo mostra um professor estimulando uma oscilação em uma frequência diferente da frequência natural do sistema e, logo depois, na mesma frequência natural do sistema. Veja o que acontece:
+				
+				</p>
+				
+				<iframe width="420" height="315" src="https://www.youtube.com/embed/00dNfpQksco" class="video"></iframe>
+				
+				<p>
+				
+					A seguir, vemos uma sequência de três imagens extraídas de um vídeo onde uma onda sonora tem a mesma frequência que a frequência natural de um copo de cristal. O copo absorve energia a uma taxa máxima, aumentando sua amplitude até quebrar.
+				
+				</p>
+				
+				<img src="images/figura_06.jpg" alt="Ressonância faz taça quebrar."><div class="legenda">Reprodução: Youtube</div>
+				
+				<p>
+				
+					Agora, vejamos o vídeo de um experimento onde uma onda sonora incide sobre uma taça de cristal, tal que a frequência do som é igual à frequência natural da taça. O que será que pode acontecer? 
+				
+				</p>
+				
+				<iframe src="https://www.youtube.com/embed/qy1c5_vYTVo" class="video"></iframe>
+				
+				<p>
+				
+					Veja mais dois vídeos sobre o fenômeno de ressonância:
+				
+				</p>
+				
+				<ul class="lista1">
+					<li><a href="http://pt.wikipedia.org/wiki/Ponte_Tacoma_Narrows">Ponte Takoma Narrows (Wikipedia)</a></li>
+					<li><a href="http://www.youtube.com/watch?v=3CMlXyV2XnE&hd=1">Ressonância Aeroelástica (Cláudia de Abreu)</a></li>
+				</ul>
+				<!-- Inicio navegação fim da aula -->
+				<div class="nav-aula"> 
+					<ul>
+						<li><a href="../aula_0302/aula_0302.html">&laquo;</a></li>
+						<li><a href="#">&uparrow;</a></li>
+						<li><a href="../aula_0304/aula_0304.html">&raquo;</a></li>
+					</ul>
+				</div>
+				<!-- Fim navegação fim da aula -->
+			</div> <!-- Fim DIV essencial para o conteúdo -->
+		</div>
+		<div class="rodape">
+			<div class="container-centro">
+			iFisica.org - SIMULAB | Créditos da aula: Prof. Geraldo Felipe - IFRN CNAT | Natal, RN, maio de 2015.<br> Design: Pedro Oliveira e Tuane Peres (bolsistas IFRN/CNAT)
+			</div>
+		</div>		
+	</div>
+</body>
+</html>

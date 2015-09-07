@@ -1,0 +1,167 @@
+// CORES
+$fundo: #2c3e50
+$gelo: #ecf0f1
+$azul-cinza: #34495e
+$verde: #27ae60
+$azul-claro: #3498db
+$amarelo: #f7ca18
+$vermelho: #c0392b
+
+@mixin clearfix() 
+	&:before,
+	&:after 
+		content: ""
+		display: table
+	&:after
+		clear: both
+    
+@font-face
+	font-family: 'Amble'
+	src: url("http://simulab.ifisica.org/css/Amble-Regular.ttf") format("truetype")
+	font-weight: normal
+	font-style: normal
+
+// RESET
+*
+	margin: 0
+	padding: 0
+	zoom: 1
+	line-height: 1
+
+// CORPO
+body
+	font-family: 'Open Sans', sans-serif
+	font-weight: 400
+	background: $gelo
+	font-size: 16px	
+
+b
+	font-weight: 700
+	color: $fundo
+
+
+hr
+	height: 1px
+	background: #b2b2b2
+	//background-image: linear-gradient(to right, #333, #ccc)
+	//background-image: -webkit-linear-gradient(left, #333, #ccc)
+	//background-image: -o-gradient(right, #333, #ccc)
+	//background-image: -moz-linear-gradient(right, #333, #ccc)
+	border: none
+	padding: 0
+
+
+// LIMITES
+.px1200
+	width: 100%
+	max-width: 1200px
+	margin: 0 auto
+
+.px720
+	width: 100%
+	max-width: 720px
+	margin: 0 auto
+
+// CONTAINERS
+.row
+	//background: blue
+	//width: 100%
+	margin-bottom: 20px
+	&:last-child
+		margin-bottom: 0px
+	@media (min-width: 1260px)
+		margin-bottom: 0
+	margin-right: 20px
+.row-1--1200px	
+	max-width: 1200px
+.row-2--1200px	
+	max-width: 600px
+.row-3--1200px
+	max-width: 400px
+	//background: pink
+	&:last-of-type
+		align-self: flex-end
+	
+
+// Displays Flex
+.flex
+	display: flex
+
+.flex-between-wrap
+	flex-wrap: wrap
+	justify-content: space-between
+
+.flex-center-wrap	
+	flex-wrap: wrap
+	justify-content: center
+
+//LINKS
+a
+	text-decoration: none
+	color: $azul-claro
+
+.link-padding
+	display: inline-block
+	padding: 20px
+	color: white
+	
+.link-padding--cabecalho	
+	transition: all 0.2s ease-in-out
+	line-height: 24px
+	font-size: 16px
+	&:hover
+		background: $gelo
+		color: $fundo
+
+.link-externo
+	transition: all 100ms linear
+	background: #1d1d1d
+	padding: 10px 15px 5px 15px
+	border-bottom: 5px solid #1d1d1d
+	&:hover		
+		border-bottom: 5px solid $azul-claro
+
+//IMAGENS
+.logo-wrapper
+	text-align: right
+.logo-rodape
+	text-align: right
+	width: 100px
+
+.imagem
+	display: block
+	margin: 10px auto
+	max-width: calc(100% - 30px)
+	box-shadow: 0 4px 4px rgba(black, 0.2)
+	padding: 5px
+
+.link
+	cursor: pointer
+
+//NAVEGAÇÃO FIM DE AULA
+.nav-fim-aula
+	margin-top: 40px
+	text-align: right
+
+.seta 
+	transition: all 0.2s linear
+	opacity: 0.7
+	display: inline-block
+	height: 50px
+	width: 50px
+	background: url(../icons/seta.svg) center no-repeat
+	background-size: 50px 50px
+	&:hover
+		opacity: 1
+
+.seta-anterior
+	transform: rotate(180deg)
+	
+.seta-top
+	transform: rotate(-90deg)
+	
+
+
+
+		
+		

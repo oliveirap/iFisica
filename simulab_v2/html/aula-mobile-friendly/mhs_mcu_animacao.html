@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<body>
+    <canvas id="myCanvas" width="610px" height="420px"></canvas>
+	<script src="ifscript.js"></script>	
+    <script type="text/javascript">
+		
+	  //--------------------------------------------------------------------------------------------------
+		var canvas = document.getElementById('myCanvas');
+		var ctx = canvas.getContext('2d');
+		//VARIÁVEIS PARA DESENHAR O CONTEXTO
+		var x0 = 200;
+		var y0 = 200;
+		var R = 150;
+		var px = R;
+		var py = 0;
+		var w = 0.2;
+		var tempo = 0;
+		var validar_movimento = false;
+		var validar_projecaoX = false;
+		var validar_projecaoY = false;
+		var cor1 = 'black';
+		var cor3 = 'black';
+		var cor4 = 'black';		
+		//
+		var bx1 = 460;
+		var by1 = 130;
+		
+		var bx2 = bx1;
+		var by2 = by1 + 40;
+		
+		var bx3 = bx1;
+		var by3 = by2 + 40;
+		
+		var bx4 = bx1;
+		var by4 = by3 + 40;
+
+//BOTÕES (PROGRAMAÇÃO) -------------------------------------------------------------------------
+		var b = 7		
+		function cliqueMouse(e){
+			// INICIAR
+			if(e.pageX > bx1 + b && e.pageX < bx1 + 120 + b && e.pageY > by1 + b && e.pageY < by1 + 25 + b){			
+				if(	validar_movimento == false){
+					validar_movimento = true;					
+					cor1 = 'rgba(0,0,150,1)';					
+				}else{
+					validar_movimento = false;
+				}
+			}
+
+			// VOLTAR
+			if(e.pageX > bx2 + b && e.pageX < bx2 + 120 + b && e.pageY > by2 + b && e.pageY < by2 + 25 + b){	
+				validar_movimento = false;
+				validar_projecaoX = false;
+				validar_projecaoY = false;
+				tempo = 0;
+				px = R;
+				py = 0;
+				cor1 = 'black';
+				cor3 = 'black';
+				cor4 = 'black';
+			}
+			
+			// PROJEÇÃO EM X
+			if(e.pageX > bx3 + b && e.pageX < bx3 + 120 + b && e.pageY > by3 + b && e.pageY < by3 + 25 + b){	
+				if(	validar_projecaoX == false){
+					validar_projecaoX = true;	
+					cor3 = 'rgba(0,0,150,1)';
+				}else{
+					validar_projecaoX = false;
+					cor3 = 'black';
+				}
+			}
+			
+			// PROJEÇÃO EM Y
+			if(e.pageX > bx4 + b && e.pageX < bx4 + 120 + b && e.pageY > by4 + b && e.pageY < by4 + 25 + b){	
+				if(	validar_projecaoY == false){
+					validar_projecaoY = true;	
+					cor4 = 'rgba(0,0,150,1)';					
+				}else{
+					validar_projecaoY = false;
+					cor4 = 'black';
+				}
+			}			
+		}	
+		canvas.onmousedown = cliqueMouse;		
+		
+		function desenhar(){
+			//DESENHO DA ESTRUTURA
+			ctx.clearRect(0,0,canvas.width,canvas.height);// Apagar tudo para redesenhar
+			retangulovazado(2,2,canvas.width - 5,400,1,'black');
+			eixo(x0,y0,360,0);
+			eixo(x0,y0,360,-90);
+			escrever('x',8,'verdana',x0 + 180,y0-5,'black');
+			escrever('y',8,'verdana',x0 + 5,y0 - 180,'black');
+			circulo_vazado(x0,y0,R,'rgba(100,100,100,0.5');
+			//
+			if(validar_movimento == true){
+				tempo = tempo + 0.05
+				px = R*Math.cos(w*tempo);
+				py = -R*Math.sin(w*tempo);
+			}			
+			circulo(x0 + px,y0 + py,5,'rgba(0,150,0,1)','rgba(0,150,0,1)');				
+			linhareta(x0,y0,x0 + px,y0 + py,1,'rgba(100,100,100,1)');//Raio
+			//
+			if(validar_projecaoX == true){
+				circulo(x0 + px,y0,3,'blue','blue');				
+				linhareta(x0 + px,y0,x0 + px,y0 + py,1,'rgba(100,100,100,1)');//Projeção em x				
+			}
+			if(validar_projecaoY == true){				
+				circulo(x0,y0 + py,3,'red','red');				
+				linhareta(x0,y0 + py,x0 + px,y0 + py,1,'rgba(100,100,100,1)');// Projeção em y
+			}
+			//DESENHO DOS BOTÕES
+			//Iniciar/Pausa
+			retangulovazado(bx1,by1,120,25,1,'black');
+			escrever('Iniciar/Pausa',8,'verdana',bx1 + 16,by1 + 16,cor1);
+			
+			//Voltar
+			retangulovazado(bx2,by2,120,25,1,'black');
+			escrever('Voltar',8,'verdana',bx2 + 40,by2 + 16,'black');
+			
+			//Projeção em X
+			retangulovazado(bx3,by3,120,25,1,'black');
+			escrever('Projeção em x',8,'verdana',bx3 + 20,by3 + 16,cor3);
+			
+			//Projeção em Y
+			retangulovazado(bx4,by4,120,25,1,'black');
+			escrever('Projeção em y',8,'verdana',bx4 + 20,by4 + 16,cor4);
+			//<---------------------------------------->			
+			escrever('iFisica.org',8,'verdana',545,417,'rgba(0,0,80,1');	
+			
+		}
+		
+		setInterval(desenhar,10);		
+		
+		// ------------------------------------------------------------------------------------------	
+    </script>
+  </body>
+</html>

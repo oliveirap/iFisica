@@ -1,0 +1,92 @@
+// PARÁGRAFOS
+.p-rodape
+	font-size: 12px
+	line-height: 1.6
+	text-align: right
+	vertical-align: bottom
+
+.p-aula
+	
+	margin: 20px 15px
+	font-size: 17px
+	line-height: 1.6
+	text-align: justify
+	@media (max-width: 480px)
+		text-align: left
+
+.legenda
+	font-size: 12px
+	text-align: center
+	margin: 0px 0 30px 0
+
+.tome-nota
+	line-height: 1.4
+	display: block
+	background: $fundo
+	color: white
+	padding: 15px 20px
+	margin: 40px 40px 20px
+	position: relative
+	text-align: justify
+	@media (max-width: 480px)
+		text-align: left
+	border-top-right-radius: 10px
+	//border-bottom-right-radius: 10px
+	//border-bottom-left-radius: 10px
+	&:before
+		text-transform: uppercase
+		line-height: 1
+		content: "#Tomenota"
+		font-size: 18px
+		//font-weight: 700
+		position: absolute
+		top: 0
+		left: 0
+		transform: translateY(-27px)
+		padding: 10px
+		background: $fundo
+		border-top-right-radius: 10px
+		border-top-left-radius: 10px
+	b
+		color: white
+
+.chamada-animacao
+	line-height: 1.4
+	display: block
+	margin: 50px 40px 20px
+	padding: 20px
+	@media (max-width: 394px)
+		padding-top: 40px
+	color: white
+	position: relative
+	background: $verde
+	//text-align: justify
+	@media (max-width: 480px)
+		text-align: left
+
+	box-shadow: 0px 3px 4px rgba(black, 0.25)
+	&:before
+		//box-shadow: 0px 4px 5px rgba(black, 0.25)
+		line-height: 1
+		@media (max-width: 394px)
+			line-height: 1.4
+		position: absolute
+		top: 0
+		left: 0
+		content: "Quer responder essas perguntas?"
+		font-size: 18px
+		//font-weight: 700	
+		transform: translateY(-27px)
+		padding: 10px
+		color: white
+		background: $verde
+		border-top-right-radius: 10px
+		border-top-left-radius: 10px
+	a
+		color: white
+		font-weight: 700
+
+.autor
+	text-align: right
+	margin: 40px 0px 0px
+	font-size: 12px

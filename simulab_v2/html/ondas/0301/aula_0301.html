@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	
+	<link rel="stylesheet" href="css/estilo.css">
+	
+	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="icons/apple-touch-icon-57x57.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="icons/apple-touch-icon-114x114.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="icons/apple-touch-icon-72x72.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="icons/apple-touch-icon-144x144.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="60x60" href="icons/apple-touch-icon-60x60.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="icons/apple-touch-icon-120x120.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="icons/apple-touch-icon-76x76.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="icons/apple-touch-icon-152x152.png" />
+	<link rel="icon" type="image/png" href="icons/favicon-196x196.png" sizes="196x196" />
+	<link rel="icon" type="image/png" href="icons/favicon-96x96.png" sizes="96x96" />
+	<link rel="icon" type="image/png" href="icons/favicon-32x32.png" sizes="32x32" />
+	<link rel="icon" type="image/png" href="icons/favicon-16x16.png" sizes="16x16" />
+	<link rel="icon" type="image/png" href="icons/favicon-128.png" sizes="128x128" />
+	<meta name="application-name" conteudo="&nbsp;"/>
+	<meta name="msapplication-TileColor" conteudo="#FFFFFF" />
+	<meta name="msapplication-TileImage" conteudo="icons/mstile-144x144.png" />
+	<meta name="msapplication-square70x70logo" conteudo="icons/mstile-70x70.png" />
+	<meta name="msapplication-square150x150logo" conteudo="icons/mstile-150x150.png" />
+	<meta name="msapplication-wide310x150logo" conteudo="icons/mstile-310x150.png" />
+	<meta name="msapplication-square310x310logo" conteudo="icons/mstile-310x310.png" />
+	
+	<script src="ifscript.js"></script>	
+	
+	<title>MHS I</title>
+	
+</head>
+<body>
+	<div class="corpo">  <!-- DIV geral. Não remover -->
+	
+		<!-- Inicio cabeçalho -->
+		<div class="cabecalho">
+			<div class="container-centro">
+				<div class="logo"><a href="http://simulab.ifisica.org">SIMULAB</a></div>
+				<div class="nav">
+					<ul>						
+						<li><a href="#">Anterior</a></li>
+						<li><a href="../aula_0302/aula_0302.html">Próxima</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- Fim cabeçalho -->
+		
+		<!-- DIV alinhada ao centro, para conteúdo. Não remover -->
+		<div class="conteudo"> <!-- Não mexer -->
+			<div class="container-conteudo-centro"> <!-- Inicio DIV essencial para o contéudo -->		
+				
+				<header>Ondulatória - Aula 01<br>Movimento Harmônico Simples I<hr></header>
+				
+				<h3>1.1 Definição</h3>	
+				<hr>
+				<p>
+					Tudo oscila. De prédios à tensão elétrica que alimenta seu computador, passando pelos átomos que constituem o corpo mais rígido que você puder imaginar. Esses movimentos de oscilação podem ser observados em árvores que estão sob a ação da força do vento, em crianças brincando em um balanço ou em um lustre balançando no interior de uma igreja (parece que foi assim que Galileu Galilei teve sua atenção voltada para esse tema).
+				</p>	
+				
+				<img src="images/figura_01.jpg">
+				
+				<div class="legenda">Jean-Honoré Fragonard: O balanço, 1766</div>	
+				
+				<div class="comentario-ilustracao">
+					Na situação acima, o balanço apresenta um movimento de oscilação. Um homem (ao fundo) aplica uma força sobre o mesmo, repondo a energia dissipada durante o movimento ou, se ele o faz na mesma frequência de oscilação do balanço, aumentando grandemente sua amplitude de oscilação.
+				</div>
+				
+				<p>
+					Vamos iniciar nosso estudo com um sistema chamado de oscilador massa-mola. Esse sistema consta de um corpo de massa "m" preso a uma mola de constante elástica "k". Ao comprimir ou distender a mola, uma força elástica atuará sobre o corpo. Adotando que as forças dissipativas (como atrito e resistência do ar) são irrelevantes no processo, a força elástica será a força resultante sobre o corpo e este se moverá apenas em função da ação dessa força.<br><br>O simulador abaixo mostra o modelo de um sistema massa-mola ideal:
+				</p>
+				
+				<div class="comentario-ilustracao">
+					Inicialmente a mola está com seu comprimento natural, não aplicando força sobre o corpo. Para mover o corpo utilize os botões em forma de seta. Clique no botão "Iniciar/Parar" para iniciar o movimento ou implementar uma pausa. O vetor velocidade é mostrado na cor azul e o vetor força elástica é mostrado na cor vermelha. Utilize os botões "Velocidade" e "Força Elástica" para visualizar esses vetores. O botão "Voltar" restaura as condições iniciais.
+				</div>
+				
+				<div class="animacao">
+					<iframe  class ="animacao"src='MHS_animacao.html'>
+					</iframe>
+				</div>
+				
+				<p><h3 id="recuo">Comentários:</h3></p>
+				
+				<p>
+					a) Lembre-se, do curso de mecânica, que a força elástica atua sempre no sentido de levar o corpo à sua posição de equilíbrio (onde não há deformação da mola). Esse tipo de força é chamada de restauradora. Além disso, o módulo da força elástica não é constante, pois é proporcional à deformação da mola.
+				</p>
+				
+				<p>
+					b) O corpo parte da posição inicial (posição de onde o corpo foi solto) com velocidade nula, passando pela posição de equilíbrio (10 cm) com velocidade máxima. Entre a posição inicial e a posição de equilíbrio o movimento é acelerado (a força resultante e a velocidade apresentam a mesma direção e sentido). Nesse processo, toda a energia potencial elástica é transformada em energia cinética.
+				</p>
+				
+				<p>
+					c) Entre a posição de equilíbrio e a outra extremidade (quando o corpo inverte o sentido do movimento) o corpo apresenta um movimento desacelerado, pois a força resultante e a velocidade têm a mesma direção, mas sentidos opostos. Nesse processo, a energia cinética do corpo se transforma novamente em energia potencial elástica.
+				</p>
+				
+				<p>
+					d) Não havendo dissipação de energia, o processo se repetirá indefinidamente.
+				</p>
+				
+				<hr>
+				<h3>
+					1.2 Definição Matemática de um Movimento Harmônico Simples									
+				</h3>
+				<hr>
+				
+				<p>
+					Já estudamos que a força elástica aplicada por uma mola depende da rigidez da mola, definida por sua constante elástica (k) e da deformação da mola (x). Considerando que a força elástica é força resultante sobre o corpo, e lembrando que o valor algébrico da força elástica é sempre o contrário do valor algébrico da deformação, vamos deduzir uma expressão para calcular a aceleração do corpo em função da constante elástica, da massa do corpo e da deformação da mola.
+				</p>
+				
+				<div class="canvas01">
+					<canvas id="canvas01" width="200" height="180"></canvas>		
+			
+					<script type="text/javascript">	
+						var canvas = document.getElementById("canvas01");
+						var ctx = canvas.getContext("2d");
+						//retangulovazado(0,0,canvas.width,canvas.height,1,'black');
+						//LOGOTIPO DO IF
+						var x0 = 20;
+						var y0 = 20;
+						var e = 1.5;
+						ctx.scale(e,e);
+						escreversub('F', 'e',10,'verdana',x0,y0,'black');
+						escrever('=',10,'verdana',x0 + 20,y0,'black');
+						escrever('- k',10,'verdana',x0 + 35,y0,'black');
+						escrever('.',14,'verdana',x0 + 56,y0 - 2,'black');
+						escrever('x',10,'verdana',x0 + 65,y0,'black');
+						//
+						escrever('m',10,'verdana',x0,y0 + 40,'black');
+						escrever('.',14,'verdana',x0 + 16,y0 + 40 - 2,'black');
+						escrever('a',10,'verdana',x0 + 25,y0 + 40,'black');
+						escrever('=',10,'verdana',x0 + 40,y0 + 40,'black');
+						escrever('- k',10,'verdana',x0 + 55,y0 + 40,'black');
+						escrever('.',14,'verdana',x0 + 76,y0 + 40 - 2,'black');
+						escrever('x',10,'verdana',x0 + 85,y0 + 40,'black');
+						//
+						escrever('a',10,'verdana',x0,y0 + 80,'black');
+						escrever('=',10,'verdana',x0 + 15,y0 + 80,'black');
+						
+						escrever('- k',10,'verdana',x0 + 35,y0 + 80 - 8,'black');
+						escrever('.',14,'verdana',x0 + 60,y0 + 80 - 2 - 8,'black');
+						escrever('x',10,'verdana',x0 + 72,y0 + 80 - 8,'black');
+						escrever('m',10,'verdana',x0 + 53,y0 + 80 + 10,'black');
+						
+						retahorizontal(x0 + 33,y0 + 76,52,1,'black')
+						
+					</script>
+				</div>
+				
+				<p>
+					Sabendo sua aceleração, podemos saber também sua velocidade em função do tempo e consequentemente sua posição em função do tempo.
+				</p>
+				
+				<div class="destaque-lapis">
+					Dizemos que um corpo apresenta um movimento harmônico simples (MHS) quando sua aceleração é proporcional ao seu deslocamento em relação à posição de equilíbrio estável e tem sentido contrário ao mesmo.
+				</div>
+				
+				<p>
+					Esse tipo de oscilação é chamada de periódica, pois se repete em intervalos de tempo iguais. Segue abaixo algumas definições associadas a esse tipo de movimento:
+					
+					<ol class="lista1">
+						<li>Período: intervalo de tempo necessário para que uma oscilação completa ocorra (unidade no SI: s).</li>
+						<li>Frequência: número de oscilações por unidade de tempo (unidade no SI: Hz).</li>
+						<li>Amplitude: deslocamento máximo em relação à posição de equilíbrio (unidade no S.I: m).</li>
+					</ol>
+					
+				</p>
+				
+				<p>
+					Observe que, quanto maior a constante elástica da mola, maior a intensidade da força elástica, menor o período de oscilação e consequentemente maior a frequência de oscilação.
+				</p>
+				
+				<p>
+					Contudo, quanto maior a massa, maior a dificuldade que o corpo oferece a ter sua velocidade modificada, maior o período de oscilação e menor a frequência de oscilação.
+				</p>
+				
+				<p>
+					&bullet; Na prática de laboratório, com um sistema massa-mola vertical, observamos que o período de oscilação não depende da amplitude do movimento. Podemos justificar esse fato conceitualmente considerando que, com uma maior amplitude, teremos uma maior força elástica, mas também uma maior distância a ser percorrida em cada oscilação, comparativamente a uma oscilação com amplitude baixa. Isso, por sí só, nos permite perceber um sentido lógico na independência entre o período e a amplitude em um MHS. <i>Observação: essa afirmação é válida apenas para amplitudes pequenas.</i>
+				</p>
+				
+				<p>
+					&bullet; Então, o período de oscilação diminui se aumentarmos a constante elástica da mola, e aumenta se aumentarmos a massa da mola. Como seria uma expressão matemática para calcular esse período?
+				</p>
+				
+				<!-- Inicio navegação fim da aula -->
+				<div class="nav-aula"> 
+					<ul>
+						<li><a href="#">&laquo;</a></li>
+						<li><a href="#">&uparrow;</a></li>
+						<li><a href="../aula_0302/aula_0302.html">&raquo;</a></li>
+					</ul>
+				</div>
+				<!-- Fim navegação fim da aula -->
+			</div> <!-- Fim DIV essencial para o conteúdo -->
+		</div>
+		<div class="rodape">
+			<div class="container-centro">
+			iFisica.org - SIMULAB | Créditos da aula: Prof. Geraldo Felipe - IFRN CNAT | Natal, RN, maio de 2015.<br> Design: Pedro Oliveira e Tuane Peres (bolsistas IFRN/CNAT)
+			</div>
+		</div>		
+	</div>
+</body>
+</html>

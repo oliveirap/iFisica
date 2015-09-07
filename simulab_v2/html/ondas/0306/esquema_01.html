@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<body onkeydown="whichButton(event)">
+    <canvas id="myCanvas" width="430" height="120"></canvas>	
+	<script src="ifscript.js"></script>
+    <script>
+		//--------------------------------------------------------------------------------------------------
+		var canvas = document.getElementById('myCanvas');
+		var ctx = canvas.getContext('2d');		
+		var x0 = 10;
+		var y0 = 60;
+		//retangulovazado(5,5,canvas.width - 5,canvas.height - 5,1,'black')		
+		retahorizontal(x0,y0,400,2,'blue');
+		retavertical(x0 + 100,y0 + 20,18,2,'blue');	
+		retavertical(x0 + 300,y0 + 20,18,2,'blue');
+		escrever('20 Hz',10,'verdana',x0 + 90,y0 + 40,'blue');
+		escrever('20.000 Hz',10,'verdana',x0 + 290,y0 + 40,'blue');
+		escrever('Infrasom',10,'verdana',x0 + 10,y0 - 10,'rgba(250,100,0,1)');		
+		escrever('Som Audível',10,'verdana',x0 + 160,y0 - 10,'blue');
+		escrever('Ultrasom',10,'verdana',x0 + 320,y0 - 10,'rgba(0,100,0,1)');
+		// ------------------------------------------------------------------------------------------	
+    </script>
+  </body>
+</html>

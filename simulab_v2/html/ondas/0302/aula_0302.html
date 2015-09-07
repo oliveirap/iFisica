@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	
+	<link rel="stylesheet" href="css/estilo.css">
+	
+	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="icons/apple-touch-icon-57x57.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="icons/apple-touch-icon-114x114.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="icons/apple-touch-icon-72x72.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="icons/apple-touch-icon-144x144.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="60x60" href="icons/apple-touch-icon-60x60.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="icons/apple-touch-icon-120x120.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="icons/apple-touch-icon-76x76.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="icons/apple-touch-icon-152x152.png" />
+	<link rel="icon" type="image/png" href="icons/favicon-196x196.png" sizes="196x196" />
+	<link rel="icon" type="image/png" href="icons/favicon-96x96.png" sizes="96x96" />
+	<link rel="icon" type="image/png" href="icons/favicon-32x32.png" sizes="32x32" />
+	<link rel="icon" type="image/png" href="icons/favicon-16x16.png" sizes="16x16" />
+	<link rel="icon" type="image/png" href="icons/favicon-128.png" sizes="128x128" />
+	<meta name="application-name" conteudo="&nbsp;"/>
+	<meta name="msapplication-TileColor" conteudo="#FFFFFF" />
+	<meta name="msapplication-TileImage" conteudo="icons/mstile-144x144.png" />
+	<meta name="msapplication-square70x70logo" conteudo="icons/mstile-70x70.png" />
+	<meta name="msapplication-square150x150logo" conteudo="icons/mstile-150x150.png" />
+	<meta name="msapplication-wide310x150logo" conteudo="icons/mstile-310x150.png" />
+	<meta name="msapplication-square310x310logo" conteudo="icons/mstile-310x310.png" />
+	
+	<script src="ifscript.js"></script>	
+	
+	<title>MHS II</title>
+	
+</head>
+<body>
+	<div class="corpo">  <!-- DIV geral. Não remover -->
+	
+		<!-- Inicio cabeçalho -->
+		<div class="cabecalho">
+			<div class="container-centro">
+				<div class="logo"><a href="http://simulab.ifisica.org">SIMULAB</a></div>
+				<div class="nav">
+					<ul>						
+						<li><a href="../aula_0301/aula_0301.html">Anterior</a></li>
+						<li><a href="../aula_0303/aula_0303.html">Próxima</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- Fim cabeçalho -->
+		
+		<!-- DIV alinhada ao centro, para conteúdo. Não remover -->
+		<div class="conteudo"> <!-- Não mexer -->
+			<div class="container-conteudo-centro"> <!-- Inicio DIV essencial para o contéudo -->		
+				
+				<header>Ondulatória - Aula 02<br>Movimento Harmônico Simples II<hr></header>
+				
+				<h3>2.1 Período e Frequência em um Sistema Massa-Mola</h3>	
+				<hr>
+				
+				<p>	
+				
+					Em nossa prática de laboratório vimos que o período de oscilação de um sistema massa-mola depende apenas da constante elástica da mola e da massa pendular (não dependendo da amplitude do movimento oscilatório).
+				
+				</p>
+				
+				<p>
+				
+					Fazendo uma análise dimensional da relação entre as grandezas período(s), constante elástica (kg/s2) e massa (kg), e testando valores numéricos obtidos por meio de experimentos, chegamos na seguinte expressão matemática para o cálculo do período de um oscilador massa-mola:
+				
+				</p>
+				
+				<img src="images/figura_01.jpg" alt="Período de um oscilador massa-mola">
+				
+				<p>
+				
+					Consequentemente, a frequência desse sistema é:
+				
+				</p>
+				
+				<img src="images/figura_02.jpg" alt="Frequência de um oscilador massa-mola">
+				
+				<p>
+				
+					O vídeo abaixo a dedução algébrica da expressão para o cálculo do período de um sistema massa-mola:
+				
+				</p>
+				
+				<iframe  src="https://www.youtube.com/embed/Tb14Nc9B5Cc" style="border:none" class="video"></iframe>
+					
+				<p>
+				
+					Chamamos essa frequência de <b>frequência natural</b> do sistema massa-mola. Contudo, todo sistema passível de oscilar possui um valor de frequência natural. Esse valor depende de um conjunto de condições particulares do próprio sistema. E esse sistema pode ser um corpo preso a uma mola, ou um edifício...
+				
+				</p>
+				
+				<p>
+				
+					Segundo <a href="http://www.cesec.ufpr.br/etools/oe3/applets/forca_vento/" target="_new">esse site</a>: o "Sears tower, em Chicago, com 520m de altura, oscila com amplitude próxima de 1m. Essas oscilações se tornaram incômodos tão grandes, que levaram os engenheiros modernos a criarem amortecedores de oscilações".
+				
+				</p>
+				
+				<p>
+				
+					O vídeo abaixo mostra dois prédios oscilando com amplitude visível, devido a um terremoto.
+				
+				</p>
+				
+				<iframe class="video" src="https://www.youtube.com/embed/vgXDUUpuVsg" style="border:none" ></iframe>
+				
+				<br><br>
+				
+				<hr>
+				<h3>2.2 MHS e MCU</h3>
+				<hr>
+				
+				<p>
+				
+					Na simulação da aula 01 usamos apenas a segunda lei de Newton para implementar os cálculos na programação. Mas existe uma expressão matemática mais adequada para descrever um MHS. Essa expressão é deduzida através da análise da projeção de um ponto que executa um Movimento Circular Uniforme. Mas qual a relação entre um MSH e um MCU? Analise a animação abaixo e descubra!
+				
+				</p>
+				
+				<iframe src="mhs_mcu_animacao.html" width = "630" height = "440" class="animacao"> </iframe>
+				
+				<p>
+				
+					Que tipo de movimento apresenta as projeções do ponto em MCU? Tanto o ponto azul, como o ponto vermelho, oscilam em torno de uma posição de equilíbrio, em MHS! Logo, se sabemos descrever matematicamente o movimento do ponto em MCU em função do tempo, então podemos também descrever matematicamente a posição de suas projeções em função do tempo.
+				
+				</p>
+				
+				<p>
+				
+					Considere que o ponto verde está em MCU, com velocidade angular constante w, partindo de um ângulo inicial de 0 rad, e movendo-se no sentido anti-horário.
+				
+				</p>
+				
+				<img src="images/figura_03.png" alt="Projeção MCU em MHS">
+				
+				<p>
+				
+					&bullet; A posição do ponto azul (x) equivale ao tamanho do cateto adjacente do triangulo desenhando. A hipotenusa do triângulo é a amplitude A da oscilação do ponto azul, e tem o mesmo valor que o raio da trajetória do ponto verde).	
+				
+				</p>
+				
+				<p>
+				
+					&bullet; O ângulo q mostrado na figura é dado pelo produto entre a velocidade angular (w) e o intervalo de tempo desde o início do movimento (t).
+				
+				</p>
+				
+				<p>
+				
+					Considerando que o ângulo inicial seja diferente de zero, chamamos o referido ângulo de fase, simbolizado pela letra f, tal que a função da posição de um corpo em MHS, em função do tempo, fica assim:
+				
+				</p>
+				
+				
+				<p id="formula">
+				
+				x = A . cos(w.t + &phi;)
+				
+				</p>
+				
+				<p>
+				
+					&bullet; Se um sistema massa-mola apresenta frequência constante, poderíamos usa-lo para aferir o tempo, construindo um relógio. Contudo, realmente isso foi feito, mas com um pêndulo. Mas que relação existe entre o movimento de um pêndulo e um MHS?
+				
+				</p>
+				
+				<!-- Inicio navegação fim da aula -->
+				<div class="nav-aula"> 
+					<ul>
+						<li><a href="../aula_0301/aula_0301.html">&laquo;</a></li>
+						<li><a href="#">&uparrow;</a></li>
+						<li><a href="../aula_0303/aula_0303.html">&raquo;</a></li>
+					</ul>
+				</div>
+				<!-- Fim navegação fim da aula -->
+			</div> <!-- Fim DIV essencial para o conteúdo -->
+		</div>
+		<div class="rodape">
+			<div class="container-centro">
+			iFisica.org - SIMULAB | Créditos da aula: Prof. Geraldo Felipe - IFRN CNAT | Natal, RN, maio de 2015.<br> Design: Pedro Oliveira e Tuane Peres (bolsistas IFRN/CNAT)
+			</div>
+		</div>		
+	</div>
+</body>
+</html>

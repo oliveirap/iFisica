@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<body onkeydown="whichButton(event)">
+    <canvas id="myCanvas" width="660" height="295"></canvas>
+	<script src="ifscript.js"></script>
+    <script>	
+		var canvas = document.getElementById('myCanvas');
+		var ctx = canvas.getContext('2d');
+		//
+		var x0 = 0;
+		var y0 = 0;
+		var comprimento = 330; 				// Comprimento das regiões de propagação
+		var altura = 200; 					// Atura das regiões de propagação		
+		var corA1 = 'rgba(0,0,200,0.1)'		// Cor da região 01	
+		var corA2 = 'rgba(0,200,0,0.1)'		// Cor da região 02
+		var vel = new Array;				// Matriz de velocidade
+		var dx = new Array;					// Matriz de posição		
+		var vel1 = 1;
+		var vel2 = 0.6;
+		var limite = x0 + comprimento;
+		var parar = 489; 					// Limite temporal para a animação
+		var tempo = 0;						// Contador temporal
+		var validar_movimento = false;		// Habilitar/desabilatar a animação
+		var validar_iniciar = false
+		
+		// DESENHO DOS BOTÕES
+		var cor1 = 'rgba(131,198,201,0.6)';		//Cor de fundo dos botões
+		var cor2a = 'rgba(0,0,100,1)';			//Cor do texto para os botões Modo
+		var cor2b = 'rgba(0,0,100,0.2)';		//Cor do texto para os botões Modo
+		var bx1 = 150;
+		var by1 = 225;
+		var bx2 = bx1 + 140;
+		var by2 = by1;
+		//
+		var bx3 = bx2 + 85;
+		var by3 = by1;
+		var bx4 = bx3 + 100;
+		var by4 = by1;
+		// Determinação dos valores inicias de posição e velocidade para cada frente de onda
+		function inicial(){
+			dx[1] = 220;
+			for(var i=2;i<15;i++){			
+				dx[i] = dx[i-1] - 40;			
+			}
+			//
+			for(var i=1;i<15;i++){
+				vel[i] = 0;			
+			}
+		}
+		inicial();	
+		// FUNÇÕES DEFINIDAS ----------------------------------------------------------
+		function frentesdeonda(){	
+			for(var i=1;i<15;i++){			
+				linhareta(dx[i],y0 + 10,dx[i],y0 + 190,1,'black');
+			}
+		}
+		//
+		function btn(texto,x,y,L,corR, corT){
+			retangulopreenchido2(x,y,L,30,corR); 
+			escrever(texto,10,'verdana',x + 12,y + 20,corT);
+		}
+		//BOTÕES (PROGRAMAÇÃO) -------------------------------------------------------------------------
+		var b = 7
+		function cliqueMouse(e){
+			// INICIAR
+			if(e.pageX > bx1 + b && e.pageX < bx1 + 130 + b && e.pageY > by1 + b && e.pageY < by1 + 25 + b){
+				validar_iniciar = true;
+				if(validar_movimento == false){
+					validar_movimento = true;
+				}else{
+					validar_movimento = false;
+				}
+					
+			}
+			
+			// VOLTAR
+			if(e.pageX > bx2 + b && e.pageX < bx2 + 90 + b && e.pageY > by2 + b && e.pageY < by2 + 25 + b){				
+				validar_iniciar = false;
+				validar_movimento = false;
+				tempo = 0;
+				inicial();
+				frentesdeonda();
+				
+				
+			}	
+
+			// MODO 01
+			if(e.pageX > bx3 + b && e.pageX < bx3 + 90 + b && e.pageY > by3 + b && e.pageY < by3 + 25 + b){
+				if(validar_iniciar == false){
+					validar_modo = true;
+					vel1 = 1;
+					vel2 = 0.6;
+					cor2a = 'rgba(0,0,100,1)';		
+					cor2b = 'rgba(0,0,100,0.2)';
+				}
+				
+				
+			}	
+
+			// MODO 02
+			if(e.pageX > bx4 + b && e.pageX < bx4 + 90 + b && e.pageY > by4 + b && e.pageY < by4 + 25 + b){
+				if(validar_iniciar == false){
+					vel1 = 1;
+					vel2 = 1.4;
+					cor2b = 'rgba(0,0,100,1)';		
+					cor2a = 'rgba(0,0,100,0.2)';
+				}	
+			}		
+		}	
+		canvas.onmousedown = cliqueMouse;
+		//	
+		//------------------------------------------------------------------------------------------------
+		function desenhar(){
+			ctx.clearRect(0,0,canvas.width, canvas.height);
+			retangulopreenchido2(x0,y0,comprimento,altura,corA1); 						// ÁREA 01
+			retangulopreenchido2(x0 + comprimento,y0,comprimento,altura,corA2); 		// ÁREA 02
+			btn('Iniciar/Parar', bx1,by1,130,cor1, 'rgb(0,0,100)');	
+			btn('Voltar', bx2,by2,75,cor1,'rgb(0,0,100)');				
+			btn('Modo 01', bx3,by3,90,cor1,cor2a);			
+			btn('Modo 02', bx4,by4,90,cor1,cor2b);			
+			escrever('(V1 > V2)',8,'verdana',bx3 + 14,by3 + 47,'rgb(250,100,0)');	
+			escrever('(V1 < V2)',8,'verdana',bx4 + 14,by4 + 47,'rgb(250,100,0)');					
+			retangulovazado(2,2,canvas.width-4,canvas.height-3,4,'rgb(60,64,145'); 		// BORDA DA TELA PRINCIPAL
+			if(validar_movimento == true){
+				tempo = tempo + 1;
+				if(tempo > parar){
+					validar_movimento = false;
+				}
+				for(var i=1;i<15;i++){
+					if(dx[i] < limite){
+						vel[i] = vel1;
+					}else{
+						vel[i] = vel2;
+					}
+					dx[i] = dx[i] + vel[i];		
+				}
+			}
+			frentesdeonda();
+			//escrever(tempo,8,'verdana',500,50,'black');	
+		}		
+		// ------------------------------------------------------------------------------------------
+		//desenhar();
+		setInterval(desenhar,10);	
+    </script>
+  </body>
+</html>

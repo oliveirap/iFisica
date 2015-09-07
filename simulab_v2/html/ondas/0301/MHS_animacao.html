@@ -1,0 +1,211 @@
+<!DOCTYPE HTML>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<body>
+    <canvas id="myCanvas" width="610" height="390"></canvas>
+	<script src="ifscript.js"></script>	
+    <script type="text/javascript">
+		
+	  //--------------------------------------------------------------------------------------------------
+		var canvas = document.getElementById('myCanvas');
+		var ctx = canvas.getContext('2d');
+		//VARIÁVEIS PARA DESENHAR O CONTEXTO
+		var x0 = 100;
+		var y0 = 100;
+		var px0 = 200;		
+		var py = 0;
+		var lado = 40;	
+		var validar_movimento = false;
+		var validar_mao = true;
+		//		
+		//VARIÁVEIS DO SISTEMA FÍSICO
+		var m = 1;
+		var px = 0;
+		var dt = 0.05;
+		var k = 0.2;
+		var V = 0;
+		var a = 0;
+		var mod_vel;
+		var mod_forca;
+		var ang_vel;
+		var ang_forca;
+		var seta_vel;
+		var seta_forca;
+		var validar_velocidade = false;
+		var validar_forca = false;
+		//
+		//VARIÁVEIS PARA DESENHAR A MOLA
+		var N = 20;
+		var L = px0 + px;
+		var passo = L/(N-1);
+		//		
+		//FUNÇÃO PARA DESENHAR OS BOTÕES	
+		//Iniciar 
+		var bx1 = 200;
+		var by1 = 320;
+		//Voltar
+		var bx2 = bx1 + 120;
+		var by2 = by1;
+		//Afastar
+		var bx3 = 150
+		var by3 = 250;
+		//Aproximar
+		var bx4 = bx3 + 60;
+		var by4 = by3;
+		//Velocidade
+		var bx5 = 280;
+		var by5 = by3 - 2;
+		//Força
+		var bx6 = bx5 + 100;
+		var by6 = by5;
+		//
+		function botao(){
+			retangulovazado(bx1, by1, 100,25,'rgba(0,0,0,0.3)');//Iniciar/Parar
+			escrever('Iniciar/Parar',8,'verdana',bx1 + 8,by1 + 16,'blue');
+			//
+			retangulovazado(bx2, by2, 100,25,'rgba(0,0,0,0.3)');//Voltar
+			escrever('Voltar',8,'verdana',bx2 + 30,by2 + 16,'blue');			
+			//
+			retangulovazado(bx3, by3, 50,25,'rgba(0,0,0,0.3)');//Afastar
+			vetor(bx3 + 40,by3 + 12,30,'blue',180,1);	
+			//
+			retangulovazado(bx4, by3, 50,25,'rgba(0,0,0,0.3)');//Aproximar					
+			vetor(bx4 + 10,by3 + 12,30,'blue',0,1);
+			//
+			retangulovazado(bx5, by5, 90,30,'rgba(0,0,0,0.3)');//Velocidade
+			escrever('Velocidade',8,'verdana',bx5 + 12,by5 + 18,'blue');
+			//
+			retangulovazado(bx6, by6, 105,30,'rgba(0,0,0,0.3)');//Força elástica
+			escrever('Força Elástica',8,'verdana',bx6 + 10,by6 + 18,'blue');	
+		}
+		
+		//BOTÕES (PROGRAMAÇÃO) -------------------------------------------------------------------------
+		var b = 7		
+		function cliqueMouse(e){
+			// INICIAR
+			if(e.pageX > bx1 + b && e.pageX < bx1 + 100 + b && e.pageY > by1 + b && e.pageY < by1 + 25 + b){			
+				if(	validar_movimento == false){
+					validar_movimento = true;
+					validar_mao = false;
+				}else{
+					validar_movimento = false;
+				}
+			}
+
+			// AFASTAR
+			if(e.pageX > bx3 + b && e.pageX < bx3 + 50 + b && e.pageY > by3 + b && e.pageY < by3 + 25 + b){	
+				if(px > -100 && validar_mao == true){	
+					px = px - 10;
+				}
+			}
+			
+			// APROXIMAR
+			if(e.pageX > bx4 + b && e.pageX < bx4 + 50 + b && e.pageY > by3 + b && e.pageY < by3 + 25 + b){	
+				if(px < 100 && validar_mao == true){	
+					px = px + 10;
+				}
+			}
+			
+			// VETOR VELOCIDADE
+			if(e.pageX > bx5 + b && e.pageX < bx5 + 90 + b && e.pageY > by5 + b && e.pageY < by5 + 25 + b){	
+				if(validar_velocidade == false){	
+					validar_velocidade = true;
+				}else{
+					validar_velocidade = false;
+				}
+			}
+			
+			// FORÇA ELÁSTICA
+			if(e.pageX > bx6 + b && e.pageX < bx6 + 90 + b && e.pageY > by6 + b && e.pageY < by6 + 25 + b){	
+				if(validar_forca == false){	
+					validar_forca = true;
+				}else{
+					validar_forca = false;
+				}
+			}
+			
+			// VOLTAR
+			if(e.pageX > bx2 + b && e.pageX < bx2 + 100 + b && e.pageY > by1 + b && e.pageY < by1 + 25 + b){	
+				validar_movimento = false;
+				validar_mao = true;
+				px = 0;
+				V = 0;
+			}
+			
+			
+		}	
+		canvas.onmousedown = cliqueMouse;
+		
+		function desenhar(){
+			//DESENHO DA ESTRUTURA
+			ctx.clearRect(0,0,canvas.width,canvas.height);// Apagar tudo para redesenhar
+			retangulovazado(5,5,canvas.width - 10,canvas.height - 30,1,'rgba(0,0,0,0.3)'); // Borda do aplicativo
+			superficie(x0 - 50,y0 + lado,500,0); // Solo
+			escalagraduadaX(x0,y0 + 70,10,2,'black');//Escala graduada
+			escrever('cm',8,'verdana',520,y0 + 69,'black');
+			escalagraduada(x0,y0 + 80,400,20,1.5,'rgba(0,100,0,1)',0);			
+			//VARIÁVEIS PARA ANIMAR O MOVIMENTO DA MOLA
+			L = px0 + px;
+			passo = L/(N-1);
+			mola_01(x0,y0 + lado/2,N,passo)
+			//			
+			escala(x0 + px0,y0 + 110,px,'red',0); // Escala Horizontal (deformação)
+			retangulopreenchido(x0 - 20,y0 - 30,20,70,1,'rgba(200,200,200,1)', 'black'); // Parede		
+			retangulopreenchido(x0 + px0 + px,y0 + py,lado,lado,1,'rgba(120,120,120,1)','black');// Corpo
+			botao();//Desenhando os botões			
+			// MÃO SEGURANDO A MOLA
+			if(validar_mao == true){
+				mao(x0 + px0 + px + 60,y0 + 5,0); 
+			}			
+			//<---------------------------------------->
+			//CÁLCULOS PARA DETERMINAR O MOVIMENTO DO CORPO 
+			//EM FUNÇÃO APENAS DA AÇÃO DA FORÇA APLICADA PELA MOLA	
+			if(validar_movimento == true){
+				a = -k*px/m;
+				V = V + a*dt;
+				px = px + V*dt;
+			}
+			//<---------------------------------------->
+			// VETORES
+			//Vetor Velocidade
+			mod_vel = 2*Math.abs(V);
+			if(V>0){
+				ang_vel = 0;
+			}else{
+				ang_vel = 180;
+			}
+			if(Math.abs(V)<10){
+				seta_vel = Math.abs(V)/10;
+			}else{
+				seta_vel = 1;
+			}	
+			if(validar_velocidade == true){
+				vetor(x0 + px0 + px,y0 - 30,mod_vel,'blue',ang_vel,seta_vel); // Vetor Velocidade
+			}
+			//<---------------------------------------->
+			//Vetor Força
+			var mult = 3;
+			mod_forca = mult*Math.abs(k*px);
+			if(k*px>0){
+				ang_forca = 180;
+			}else{
+				ang_forca = 0;
+			}
+			if(Math.abs(mult*k*px)<10){
+				seta_forca = Math.abs(mult*k*px)/10;
+			}else{
+				seta_forca = 1;
+			}
+			if(validar_forca == true){	
+				vetor(x0 + px0 + px,y0 - 50,mod_forca,'red',ang_forca,seta_forca); // Vetor Velocidade
+			}
+			//<---------------------------------------->			
+			escrever('iFisica.org / SIMULAB',7,'verdana',490,385,'rgba(0,0,80,1');	
+			
+			}
+		setInterval(desenhar,10);
+		
+		// ------------------------------------------------------------------------------------------	
+    </script>
+  </body>
+</html>

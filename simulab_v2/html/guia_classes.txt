@@ -1,0 +1,27 @@
+﻿Classes:
+	.corpo -> Define as margens da página. Essencial.
+	.cabecalho -> Fundo do cabecalho topo. Essencial.
+	.container centro -> Define as margens do conteúdo. Essencial.
+	.conteudo -> Separa o conteudo do rodape. Essencial.
+	.rodape -> Estilo do rodapé. Essencial.
+	.logo -> Estilo da logo no cabeçalho. 
+	.nav -> Estilo navegação do cabeçalho
+	.container-conteudo-centro -> DIV geral da aula em si. Envolve todos os elementos da aula. Temos especificamente nela:
+		-> .container-conteudo-centro header -> Cabeçalho do conteúdo da aula. Ex. Ondulatória - Aula 01 <br> Movimento Harmônico Simples I
+		-> .container-conteudo-centro h3 -> h3 estilizado corpo da aula. Ex. 1.1 Definição
+		-> .container-conteudo-centro hr -> HR estilizada da aula.
+		-> .container-conteudo-centro p -> Parágrafo estilizado da aula.
+	.video -> Para videos do youtube
+	.legenda -> Legenda para ilustrações
+	.comentario-ilustracao -> Comentário da aula sob ilustrações.
+	.bloco-notas -> Bloco de notas.
+	.destaque-lapis -> Destaque com lapis svg.
+	
+Tags:
+	img -> Procurar imagens menores que 700px ou que possam ser redimensionadas em escala para menos que 700px. Solução para imgs maiores será desevolvida. 
+	
+	
+		
+	
+	
+	

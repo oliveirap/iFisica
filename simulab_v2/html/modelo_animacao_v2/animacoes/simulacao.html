@@ -1,0 +1,177 @@
+<!DOCTYPE HTML>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<body>
+    <canvas id="myCanvas" width="660" height="350"></canvas>
+	<script src="ifscript.js"></script>
+    <script>
+		window.requestAnimFrame = (function(callback) {
+			return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+			function(callback) {
+			  window.setTimeout(callback, 1000 / 1);
+			};
+		})();
+	  //--------------------------------------------------------------------------------------------------
+		var canvas = document.getElementById('myCanvas');
+		var ctx = canvas.getContext('2d');
+
+		var x0 = 40;
+		var y0 = 40;
+		var R1 = 20;
+		var R2 = 15;
+		var R3 = 10
+		var R4 = 5;
+		var dx = 410;
+		var px = 40;
+		var py = 80;
+		var dteta = 0;		
+		var dp = 40;
+		var limite = 16;
+		var w = 4;
+		var tempo = 0;
+		var dt = 0.01;
+		var M1 = new Array();
+		var M2 = new Array();
+		var M3 = new Array();
+		var M4 = new Array();
+		var M5 = new Array();
+		var M6 = new Array();
+		var M7 = new Array();
+		var M8 = new Array();
+		var passo = 0;
+		var dist = 320;
+		var i;
+		var validar_animacao = false;
+		var validar_circulo = false;
+		//-----------------------------------------------------
+		//Botão Animar
+		var w1 = 95;
+		var h1 = 30;
+		var x1 = x0 + 410;
+		var x2 = x1 + w1;
+		var y1 = y0 + 270;
+		var y2 = y1 + h1;		
+		//
+		//Botão Visualizar
+		var w2 = 100;
+		var h2 = 30;
+		var x1b = x0 + 519;
+		var x2b = x1b + w2;
+		var y1b = y0 + 270;
+		var y2b = y1b + h2;
+		//BOTÕES (PROGRAMAÇÃO) -------------------------------------------------------------------------
+		var b = 7
+		function cliqueMouse(e){
+			// INICIAR
+			if(e.pageX > x1 + b && e.pageX < x2 + b && e.pageY > y1 + b && e.pageY < y2 + b){					
+				if(validar_animacao == false){
+					validar_animacao = true;
+					
+				}else{
+					validar_animacao = false;
+					
+				}
+			}
+			// VISUALIZAR
+			if(e.pageX > x1b + b && e.pageX < x2b + b && e.pageY > y1b + b && e.pageY < y2b + b){				
+				if(validar_circulo == false){
+					validar_circulo = true;
+				}else{
+					validar_circulo = false;
+				}	
+			}			
+		}	
+		canvas.onmousedown = cliqueMouse;
+		
+		//Posicionar as bolinhas horizontalmente
+		for(i=1;i<limite;i++){
+			M1[i] = px + passo;
+			passo = passo + dp;				
+		}
+		passo = 0;
+		
+		for(i=1;i<limite;i++){
+			M3[i] = px + passo;
+			passo = passo + dp;				
+		}
+		passo = 0;
+		
+		for(i=1;i<limite;i++){
+			M5[i] = px + passo;
+			passo = passo + dp;				
+		}
+		passo = 0;
+		
+		for(i=1;i<limite;i++){
+			M7[i] = px + passo;
+			passo = passo + dp;				
+		}
+		
+		
+		//Determinar a fase de cada bolinha
+		for(i=1;i<limite;i++){
+			M2[i] = dteta;
+			dteta = dteta + 0.5;				
+		}
+		dteta = 0;
+		
+		for(i=1;i<limite;i++){
+			M4[i] = dteta;
+			dteta = dteta + 0.5;				
+		}		
+		dteta = 0;
+		
+		for(i=1;i<limite;i++){
+			M6[i] = dteta;
+			dteta = dteta + 0.5;				
+		}
+		dteta = 0;
+		
+		for(i=1;i<limite;i++){
+			M8[i] = dteta;
+			dteta = dteta + 0.5;				
+		}
+		
+		// FUNÇÃO RESPONSÁVEL PELA ANIMAÇÃO ---------------------------------------------------------		
+		function animate(canvas) {
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+			retangulovazado(2, 2, canvas.width-3, canvas.height-50, 2,'rgba(149, 165, 166, 0.5)');		
+			if(validar_animacao == true){
+				tempo = tempo + dt
+			}
+			
+			if(validar_circulo == true){				
+				circulo(dist, 80,R1,'rgba(0,0,220,0.1)','rgba(0,0,0,0)');	
+				circulo(dist, 140,R2,'rgba(0,0,220,0.1)','rgba(0,0,0,0)');
+				circulo(dist, 200,R3,'rgba(0,0,220,0.1)','rgba(0,0,0,0)');
+				circulo(dist, 260,R4,'rgba(0,0,220,0.1)','rgba(0,0,0,0)');
+			}
+						
+			for (i=1;i<limite;i++){
+				circulo(M1[i] + R1*Math.sin(w*tempo - M2[i]),py - R1*Math.cos(w*tempo - M2[i]),4,'#017CC2','rgba(0,0,0,0)');
+				circulo(M3[i] + R2*Math.sin(w*tempo - M4[i]),(py + 60) - R2*Math.cos(w*tempo - M4[i]),4,'#017CC2','rgba(0,0,0,0)');
+				circulo(M5[i] + R3*Math.sin(w*tempo - M6[i]),(py + 120) - R3*Math.cos(w*tempo - M6[i]),4,'#017CC2','rgba(0,0,0,0)');
+				circulo(M7[i] + R4*Math.sin(w*tempo - M8[i]),(py + 180) - R4*Math.cos(w*tempo - M8[i]),4,'#017CC2','rgba(0,0,0,0)');
+			}
+			
+			if(tempo > 200){
+				tempo = 0;
+			}
+
+			// BOTÕES (DESENHO)
+			retangulopreenchido(x1,y1,w1,h1,2,'#1c6a9e','#1c6a9e');	
+			escrever('Animação',10,'verdana', x1 + 10,y1 + 20,'#FFF');
+			
+			retangulopreenchido(x1b,y1b,w2,h2,2,'#175781','#175781');	
+			escrever('Visualizar',10,'verdana',x1b + 12,y1b + 20,'#FFF');
+			
+			//Redesenhar tudo -----------------------------------------------------------------------------
+			requestAnimFrame(function() {
+			  animate(canvas);
+			});
+		}  			  
+		animate(canvas); 
+		// ------------------------------------------------------------------------------------------	
+    </script>
+  </body>
+</html>

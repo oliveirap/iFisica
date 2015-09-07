@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<body>
+    <canvas id="myCanvas" width="580" height="260"></canvas>
+	<script src="ifscript.js"></script>
+    <script>
+		window.requestAnimFrame = (function(callback) {
+			return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+			function(callback) {
+			  window.setTimeout(callback, 100 / 1);
+			};
+		})();
+	  //--------------------------------------------------------------------------------------------------
+		var canvas = document.getElementById('myCanvas');
+		var ctx = canvas.getContext('2d');
+		var x0 = 40;
+		var y0 = 40;
+		var dx = 325;		
+		var tempo = 0;	
+		var cor = 'rgba(0,0,200,0.1)';
+		var validar_animacao = false;
+		var validar_retangulo = false;
+		//-----------------------------------------------------
+		//Botão Animar
+		var w1 = 95;
+		var h1 = 30;
+		var x1 = x0 + 405;
+		var x2 = x1 + w1;
+		var y1 = y0 + 130;
+		var y2 = y1 + h1;
+
+		//Botão Visualizar
+		var w2 = 100;
+		var h2 = 30;
+		var x1b = x1 - 110;
+		var x2b = x1b + w2;
+		var y1b = y0 + 130;
+		var y2b = y1b + h2;
+		//
+		// Estrutura Padrão (LAYOUT) ------------------------------------------------------------------------
+		retangulovazado(5,5,canvas.width - 10,canvas.height - 60,2,'rgba(0,0,100,1)');	
+		escrever('iFisica.org / SIMULAB',8,'verdana',dx + 117,canvas.height - 35,'rgba(0,0,80,1');		
+		//escrever('Prof. Geraldo Felipe / IFRN Campus Natal Central',8,'verdana',dx - 50,canvas.height - 15,'rgba(0,0,80,1');
+		//BOTÕES (PROGRAMAÇÃO) -------------------------------------------------------------------------
+		var b = 7
+		function cliqueMouse(e){
+			// INICIAR
+			if(e.pageX > x1 + b && e.pageX < x2 + b && e.pageY > y1 + b && e.pageY < y2 + b){					
+				validar_animacao = true;
+				cor = 'rgba(200,200,200,0.1)'	
+			}			
+			
+			// VISUALIZAR
+			if(e.pageX > x1b + b && e.pageX < x2b + b && e.pageY > y1b + b && e.pageY < y2b + b){				
+				if(validar_retangulo == false){
+					validar_retangulo = true;
+				}else{
+					validar_retangulo = false;
+				}	
+			}		
+		}	
+		canvas.onmousedown = cliqueMouse;		
+		//
+		var maximo = 26;
+		var Mtempo = new Array();//seleciona as bolinhas em movimento
+		var Mpy = new Array();
+		var Mt = new Array(); // tempo para cada bolinha
+		var Mpx = new Array();		
+		var passox = 0;
+		var t0 = 0;
+		var A = 30;
+		var w = 1;
+		var dt = 0.10;
+		var limite = 2*Math.PI/w;					
+		
+		for(i=1;i <= maximo;i++){
+			Mtempo[i] = t0;
+			t0 = t0 + 0.5
+			Mpy[i] = A;	
+			Mt[i] = 0;	
+			Mpx[i] = passox;
+			passox = passox + 20
+		}		
+		
+		// FUNÇÃO RESPONSÁVEL PELA ANIMAÇÃO ---------------------------------------------------------		
+		function animate(canvas) {
+			ctx.clearRect(10, 10, canvas.width - 20, canvas.height - 70);	
+			retangulopreenchido(x0,y0 + 10,500,100,0,'rgba(200,200,200,0.2)', 'rgba(0,0,0,0)');
+			reticulado(x0,y0 + 10,26,6,0.2);
+			if(validar_retangulo == true){
+				retangulopreenchido(x0 + 196,y0 + 10,8,100,0,'rgba(50,50,200,0.2)', 'rgba(0,0,0,0');
+			}
+			//
+			if(validar_animacao == false){
+				for(i=1;i <= maximo; i++){
+					circulo(40 + Mpx[i] , 100 + Mpy[i], 2,'black','black');	
+				}	
+			}else{			
+				tempo = tempo + dt;
+				for(i=1;i <= maximo;i++){
+					if(tempo > Mtempo[i]){					
+						Mt[i] = Mt[i] + dt
+						if(Mt[i] <= limite){
+							Mpy[i] = A*Math.cos(w*Mt[i])
+						}				
+					}
+					circulo(40 + Mpx[i] , 100 + Mpy[i], 2,'black','black');									
+				}
+				if(tempo > 19){
+					cor = 'rgba(0,0,200,0.1)';
+					validar_animacao = false;
+					tempo = 0;
+					passox = 0;
+					t0 = 0;
+					for(i=1;i <= maximo;i++){
+						Mtempo[i] = t0;
+						t0 = t0 + 0.5
+						Mpy[i] = A;	
+						Mt[i] = 0;	
+						Mpx[i] = passox;
+						passox = passox + 20;
+					}		
+				}	
+			}
+			// BOTÕES (DESENHO)
+			retangulopreenchido(x1,y1,w1,h1,2,cor,'blue');	
+			escrever('Animação',10,'verdana',x1 + 10,y1 + 20,'black');	
+
+			retangulopreenchido(x1b,y1,w1,h1,2,'rgba(0,0,200,0.1)','blue');	
+			escrever('Visualizar',10,'verdana',x1b + 10,y1b + 20,'black');			
+			
+			//Redesenhar tudo -----------------------------------------------------------------
+			requestAnimFrame(function() {
+			  animate(canvas);
+			});
+		}  			  
+		animate(canvas); 
+		// ---------------------------------------------------------------------------	
+    </script>
+  </body>
+</html>

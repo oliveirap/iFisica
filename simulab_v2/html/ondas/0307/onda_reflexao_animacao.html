@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title> Reflexão </title>	
+	</head>
+	<canvas id="canvas01" width="460" height="300"></canvas>		
+	<script src="ifscript.js"></script>
+	<script type="text/javascript">	
+		var canvas = document.getElementById("canvas01");
+		var ctx = canvas.getContext("2d");
+		//	DECLARAÇÃO DE VARIÁVEIS				
+		var x0 = 3;
+		var y0 = 297;
+		var largura = 450;
+		var altura = 240;
+		var xboneco = 200;
+		var angA1 = 50;
+		var angB1 = 20;
+		var angA2 = -230;
+		var angB2 = 80;	
+		var raio = 40;
+		var px1 = x0 + 210 - raio;
+		var px2 = x0 + 190 + raio;	
+		var px3 = x0 + 200;
+		var py = altura - 70;
+		var py3 = altura - 100;	
+		var vel = 1.5;	
+		var validar_movimento = false;	
+		var validar_movimento01a = true;
+		var validar_movimento01b = false;
+		var validar_movimento02a = true;
+		var validar_movimento02b = false;
+		var validar_movimento03a = true;
+		var validar_movimento03b = false;	
+		var cor = 'rgb(100,100,200)';		
+		var tempo = 0;		
+		//DESENHO DOS BOTÕES --------------------------------------------------------------
+		var bx1 = 360;
+		var by1 = 270;
+		//
+		retangulopreenchido(bx1,by1,90,25,'black', 'rgba(200, 200, 220,0.4)');		
+		escrever('Pulso',10,'verdana',bx1 + 23,by1 + 17,'black');		
+		function voltar(){
+			validar_movimento = false;
+			validar_movimento01a = true;
+			validar_movimento01b = false;
+			validar_movimento02a = true;
+			validar_movimento02b = false;
+			validar_movimento03a = true;
+			validar_movimento03b = false;
+			px1 = x0 + 210 - raio;
+			px2 = x0 + 190 + raio;	
+			px3 = x0 + 200;
+			py = altura - 70;
+			py3 = altura - 50;			
+			tempo = 0;
+		}
+		//BOTÕES (PROGRAMAÇÃO) -------------------------------------------------------------------------
+		var b = 7
+		function cliqueMouse(e){
+			// INICIAR
+			if(e.pageX > bx1 + b && e.pageX < bx1 + 90 + b && e.pageY > by1 + b && e.pageY < by1 + 25 + b){					
+				voltar();
+				validar_movimento = true;				
+			}				
+		}	
+		canvas.onmousedown = cliqueMouse;		
+		// FUNÇÃO DE DESENNO DINÂMICO -----------------------------------------------------
+		function desenhar(){
+			ctx.clearRect(0,0,canvas.width, 250);
+			retangulopreenchido(2,2,largura,altura,3,'rgb(248, 248, 240)', 'black');
+			boneco2(x0 + xboneco,altura - 33,angA1,angB1,angA2,angB2,1);
+			//PULSO PARA A DIREITA --------------------------------------------------------
+			if(validar_movimento == true){
+				//
+				if(validar_movimento01a == true && px1 > largura - raio){
+					validar_movimento01a = false;
+					validar_movimento01b = true;
+					px1 = px1 + 2*raio;
+				}	
+				if(validar_movimento01a == true){
+					px1 = px1 + vel;	
+					arco2(px1, py, raio, -20, 20, 2, cor, 0);//Pulso para a direita					
+				}
+				if(validar_movimento01b == true){
+					px1 = px1 - vel;	
+					arco2(px1, py, raio, -20, 20, 2, cor, 180);//Pulso para a direita
+					if(px1 < x0 + 200 + raio){
+						validar_movimento01b = false;
+					}
+				}
+				//PULSO PARA A ESQUERDA --------------------------------------------------------
+				if(validar_movimento02a == true && px2 < x0 + raio){
+					validar_movimento02a = false;
+					validar_movimento02b = true;
+					px2 = px2 - 2*raio;
+				}	
+				if(validar_movimento02a == true){
+					px2 = px2 - vel;	
+					arco2(px2, py, raio, -20, 20, 2, cor, 180);//Pulso para a direita
+				}
+				if(validar_movimento02b == true){
+					px2 = px2 + vel;	
+					arco2(px2, py, raio, -20, 20, 2, cor, 0);//Pulso para a direita
+					if(px2 > x0 + 200 - raio){
+						validar_movimento02b = false;
+					}
+				}
+				//PULSO PARA CIMA --------------------------------------------------------
+				if(validar_movimento03a == true && py3 < raio){
+					validar_movimento03a = false;
+					validar_movimento03b = true;
+					py3 = py3 - 2*raio;
+				}
+				
+				if(validar_movimento03a == true){
+					py3 = py3 - vel;	
+					arco2(px3, py3, raio, -20, 20, 2, cor, -90);//Pulso para a direita
+				}
+				
+				if(validar_movimento03b == true){
+					py3 = py3 + vel;	
+					arco2(px3, py3, raio, -20, 20, 2, cor, 90);//Pulso para a direita
+					if(py3 > y0 - 160){
+						validar_movimento03b = false;
+					}
+				}	
+			}
+		}
+		setInterval(desenhar,10);
+		
+		
+	</script>
+</html>
